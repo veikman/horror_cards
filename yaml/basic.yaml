@@ -1,0 +1,530 @@
+---
+
+DECK METADATA:
+  GAME: Horror Cards
+  TITLE: basic cards
+  DEFAULTS:
+    copies: 1
+
+###############
+# ACTION DECK #
+###############
+
+Triumph:
+  copies: 2
+  data:
+    tags: [check, success]
+    lead: You pull through on this one.
+    crunch:
+      - You achieve the main goal of your action.
+
+Calculated Risk:
+  copies: 3
+  data:
+    tags: [check, risk]
+    lead: When you think you've made your own luck, it's usually stolen.
+    crunch:
+      - Take 1 Stress or remove this card from play until the next session.
+      - You achieve the main goal of your action.
+
+Slings and Arrows:
+  copies: 2
+  data:
+    tags: [check]
+    lead: Your boots lose their grip. The clip's somehow empty. They caught you on video.
+    crunch:
+      - "In combat: Take 1 Wound."
+      - Something bad, but not defeat.
+
+Yon High Eastward Hill:
+  data:
+    tags: [check]
+    lead:
+      - A secret stash cracked open. The killer's DNA beneath your ragged fingernails. The break of dawn.
+      - It will surprise you what the Lord hath done.
+    crunch:
+      - Something good, but not what you wanted.
+
+Sacrifice:
+  data:
+    tags: [check]
+    lead: A chance to prove your dedication.
+    crunch:
+      - You may draw extra cards, one at a time. For each card, take 1 Stress or 1 Wound.
+
+Red Herring:
+  copies: 3
+  data:
+    tags: [check]
+    lead: You've let precious moments go to waste.
+
+##############
+# SHOCK DECK #
+##############
+
+Angry:
+  data:
+    tags: [shock]
+    lead: Somebody fucked up again.
+
+Blocked:
+  data:
+    tags: [shock]
+    lead: Your words do not get through.
+
+Flustered:
+  data:
+    tags: [shock]
+    lead: Sweat is beading on your brow. Must be warm in here, but your hands are shaking.
+
+Breathless:
+  data:
+    tags: [shock]
+    lead: Your heartbeat bothers you. You can’t catch your breath.
+
+Clingy:
+  data:
+    tags: [shock]
+    lead: You can’t be alone right now. You need to stick close and keep talking.
+
+Confused:
+  data:
+    tags: [shock]
+    lead: Think about it. If it doesn’t make sense, it’s probably wrong.
+
+Dizzy:
+  data:
+    tags: [shock]
+    lead: You can't focus your thoughts, or your eyes.
+
+Cowardly:
+  data:
+    tags: [shock]
+    lead: A choice of sneaking or running away.
+
+Dissociated:
+  data:
+    tags: [shock]
+    lead: This wasn’t supposed to happen. It can’t be your fault. Why are you even here?
+
+Exhausted:
+  data:
+    tags: [shock]
+    lead: Your feet are heavy. You’d like to lie down.
+
+Fierce:
+  data:
+    tags: [shock]
+    lead: You have the right idea, and the others need to listen. Of course you're not delusional.
+
+Frenzied:
+  data:
+    tags: [shock]
+    lead: Did you see the fucking tentacles on that guy‽
+
+Nauseous:
+  data:
+    tags: [shock]
+    lead: You lose your lunch.
+
+Hallucinating:
+  data:
+    tags: [shock]
+    lead: You see it everywhere until you look twice.
+
+Hateful:
+  data:
+    tags: [shock]
+    lead: They’re pure evil.
+
+Poised:
+  data:
+    tags: [shock]
+    lead: If you don’t shoot first, you may not have a chance to identify your target.
+
+Reckless:
+  data:
+    tags: [shock]
+    lead: This has to be settled right now.
+
+Reeling:
+  data:
+    tags: [shock]
+    lead: You know you don't want to remember this. Don't think about it. You need something strong to wipe it out.
+
+Suggestible:
+  data:
+    tags: [shock]
+    lead: You may be a little dazed, but you’re ready to take orders.
+
+Terrified:
+  data:
+    tags: [shock]
+    lead: Nightmares crouch around that corner.
+
+Thrilled:
+  data:
+    tags: [shock]
+    lead: You feel strangely alive.
+
+Tired of Secrets:
+  data:
+    tags: [shock]
+    lead: It’s time to tell the world.
+
+Vertiginous:
+  data:
+    tags: [shock]
+    lead: Your head is light. Your stomach is throwing somersaults. It's as if you were about to fall off a cliff.
+
+Violent:
+  data:
+    tags: [shock]
+    lead: Destroy it.
+
+Loud:
+  data:
+    tags: [shock]
+    lead: You scream, you rant, you whimper.
+
+Rattled:
+  data:
+    tags: [shock]
+    lead: You vent stress through a tic. For example, you may be crunching up your toes or repeating your own words.
+
+#################
+# INSANITY DECK #
+#################
+
+Addiction:
+  data:
+    tags: [insanity]
+    lead: Gambling, sex, drugs. The more distracting, the better.
+    crunch: Take 1 Stress each day you fail to indulge.
+
+Atavism:
+  data:
+    tags: [insanity]
+    lead: You dream of impossible brutality.
+
+Asceticism:
+  data:
+    tags: [insanity]
+    lead: You do not deserve, or do not have time for, what others may consider the basics of personal grooming, hygiene and polite conversation.
+    crunch: -1 Charm.
+
+Broken Dreams:
+  data:
+    tags: [insanity]
+    lead: You cry a lot.
+    crunch: -1 Charm.
+
+Bigotry:
+  data:
+    tags: [insanity]
+    lead: At least you’re the right kind of people.
+    crunch: -1 Charm.
+
+Bipolar:
+  data:
+    tags: [insanity]
+    lead: Work around the clock. Crash hard.
+    crunch: -1 Cool.
+
+Cruelty:
+  data:
+    tags: [insanity]
+    lead: You just need to get a hold of those creeps. Preferably somewhere quiet.
+    crunch: +1 Cool.
+
+Curiosity:
+  data:
+    tags: [insanity]
+    lead: The truth about the world cannot be your enemy. It must provide opportunities. Perhaps you can join the winning team.
+    crunch: +1 Perception.
+
+Callousness:
+  data:
+    tags: [insanity]
+    lead:
+      - There’s nothing you won’t do.
+      - On the other hand, there’s nothing you won’t do.
+
+Denial:
+  data:
+    tags: [insanity]
+    lead: You don’t have a problem.
+    crunch: -1 Cool.
+
+Fugue:
+  data:
+    tags: [insanity]
+    lead: Sometimes you go missing for hours, days or weeks. You drift for a while, having no responsibilities. Forming no memories.
+
+Depression:
+  data:
+    tags: [insanity]
+    lead: Not much matters. Maybe not even the fight.
+    crunch: -1 Perception.
+
+Insomnia:
+  data:
+    tags: [insanity]
+    lead: No sleep for the wicked.
+    crunch: -1 Cool.
+
+Death Wish:
+  data:
+    tags: [insanity]
+    lead: You’re on the 9mm retirement plan. When the moment comes, you won't care who retires with you. It is a mercy, after all.
+
+Plastic People:
+  data:
+    tags: [insanity]
+    lead: You hate the faceless masses because you have to defend them.
+    crunch: -1 Charm.
+
+OCD:
+  data:
+    tags: [insanity]
+    lead: Impose order on your life.
+    crunch: -1 Charm.
+
+Collection:
+  data:
+    tags: [insanity]
+    lead: The right gear will do the job. You can’t bear to lose material possessions.
+    crunch: -1 Perception.
+
+Eating Disorder:
+  data:
+    tags: [insanity]
+    lead: You're extremely picky about your food. Your therapist says it represents your ties to the world.
+
+Biophobia:
+  data:
+    tags: [insanity]
+    lead: You hate nature. The starry sky is threatening, or the woods are full of cruelty and filth. You feel more comfortable indoors.
+
+Phobia:
+  data:
+    tags: [insanity]
+    lead: You have a paralyzing fear of something that hurt you.
+
+Paraphilia:
+  data:
+    tags: [insanity]
+    lead: Vanilla doesn't do anything for you.
+
+Paranoia:
+  data:
+    tags: [insanity]
+    lead: They spy on you. They steal from you. They blame you for everything that goes wrong.
+    crunch: -1 Cool.
+
+Rebellion:
+  data:
+    tags: [insanity]
+    lead: Your bosses talk shit. Your subordinates are mutineering slime.
+
+Extremism:
+  data:
+    tags: [insanity]
+    lead: The solution requires the transformation of society.
+
+Religion:
+  data:
+    tags: [insanity]
+    lead: "You have been fortunate to experience the numinous: A sign of the profound meaning beneath everyday life. It may not be subject to reason, but it is always there."
+
+The Rabbit Hole:
+  data:
+    tags: [insanity]
+    lead: The implications unspool.
+    crunch: Take 2 Stress. Discard this.
+
+Self-harm:
+  data:
+    tags: [insanity]
+    lead: The pain means you’re alive. It says you won’t be called to fight.
+    crunch: "When you are not wounded: Take 1 Wound."
+
+Eversion:
+  data:
+    tags: [insanity]
+    lead: You're never healthy anymore. One month it's your skin or a nasty cough, another your stomach, your teeth, your heart.
+    crunch: -1 Charm.
+
+Hero Complex:
+  data:
+    tags: [insanity]
+    lead: You’re not perfect, but you're right for this. You’re going to make it.
+    crunch: -1 Cool.
+
+Tainted Wisdom:
+  data:
+    tags: [insanity]
+    lead: Your secrets often make you nauseous. You're afraid to infect civilians just by getting close.
+    crunch: -1 Charm.
+
+#############
+# LIFE DECK #
+#############
+
+Money:
+  data:
+    tags: [life]
+    lead: You're not in debt. You don't have to worry about food or a place to sleep.
+
+Love:
+  data:
+    tags: [life]
+    lead: You're in a steady relationship. Your partner cares about you.
+
+Parenthood:
+  data:
+    tags: [life]
+    lead: You get along with your kid.
+
+Career:
+  data:
+    tags: [life]
+    lead: You're up for promotion. If you toe the line, you can really go places.
+
+Recognition:
+  data:
+    tags: [life]
+    lead: Your coworkers admire your energy and skill.
+
+Friendship:
+  data:
+    tags: [life]
+    lead: You can tell your best buddy anything.
+
+Hobby:
+  data:
+    tags: [life]
+    lead: You have a physical or creative outlet in your spare time.
+
+Mentor:
+  data:
+    tags: [life]
+    lead: You still talk to the old timer who taught you everything you know.
+
+Heritage:
+  data:
+    tags: [life]
+    lead: You know where you came from. You can go back.
+
+Therapist:
+  data:
+    tags: [life]
+    lead: You have long-term professional help.
+
+##############
+# WOUND DECK #
+##############
+
+## No location:
+
+Lost a Lot of Blood:
+  data:
+    tags: [wound, discretionary]
+    lead:
+      - Your skin is pale and cool to the touch.
+      - Without a transfusion, you will go into shock.
+
+## Head:
+
+Sickening Pain:
+  data:
+    tags: [wound, head]
+    lead: Too bad you're conscious.
+    crunch: Take 1 Stress.
+
+Concussion:
+  data:
+    tags: [wound, head]
+    lead:
+      - A mild brain injury and a massive headache.
+      - Heals in three weeks.
+
+Spitting Teeth:
+  data:
+    tags: [wound, head]
+    lead: You used to be so pretty.
+
+Swimming Vision:
+  data:
+    tags: [wound, head]
+    lead: For someone who just took a blow to the head, you're incredibly lucky.
+    crunch: -1 Perception for the scene.
+
+Lost an Eye:
+  data:
+    tags: [wound, head]
+    lead:
+      - Those aren't tears on your cheek.
+      - Does not heal.
+
+Broken Nose:
+  data:
+    tags: [wound, head]
+    lead: In the right line of work it's sort of cool.
+
+Torn Ear:
+  data:
+    tags: [wound, head]
+    lead: Lost some cartilage.
+
+Facial Bruising:
+  data:
+    tags: [wound, head]
+    lead: Cheek all swollen up.
+
+## Torso:
+
+Coughing Up Blood:
+  data:
+    tags: [wound, torso]
+    lead: There's something wrong with your lungs.
+
+Splintered Ribs:
+  data:
+    tags: [wound, torso]
+    lead: Breathing doesn't normally feel this way.
+
+Beat Up Inside:
+  data:
+    tags: [wound, torso]
+    lead: You'll be pissing blood for a week.
+
+Heart Attack:
+  data:
+    tags: [wound, torso]
+    lead:
+      - It starts with a sudden pain behind the breast bone.
+      - You ought to lie down.
+    crunch: -1 Physique.
+
+Sucking Chest Wound:
+  data:
+    tags: [wound, torso]
+    lead: If you live, you'll be in injury rehab for a year.
+    crunch: -1 Physique.
+
+Ruptured Spleen:
+  data:
+    tags: [wound, torso]
+    lead: There's a sharp pain in your left flank and shoulder. Better have that looked that.
+
+Nagging Injury:
+  data:
+    tags: [wound, torso]
+    lead: Every morning, you'll remember how you got this.
+
+Winded:
+  data:
+    tags: [wound, torso]
+    lead: It's not as bad you thought. You just need to catch your breath.
+
