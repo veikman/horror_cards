@@ -13,8 +13,13 @@ import cbg
 import cardtypes
 import location
 
-DECKS = { 'basic': cardtypes.BasicCard,
-          location.FILENAME: cardtypes.BasicCard }
+DECKS = {'basic': cardtypes.BasicCard,
+         location.FILENAME: cardtypes.BasicCard}
+
+## TODO: weapons
+## TODO: bizarre wound types
+## TODO: stat cards, skill cards
+
 
 def main():
     app = cbg.app.Application('Horror Cards', DECKS)

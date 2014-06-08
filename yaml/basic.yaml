@@ -10,7 +10,9 @@ DECK METADATA:
 # ACTION DECK #
 ###############
 
-Triumph:
+# Titles are all Hamlet quotes.
+
+The Triumph of His Pledge:
   copies: 2
   data:
     tags: [check, success]
@@ -18,44 +20,47 @@ Triumph:
     crunch:
       - You achieve the main goal of your action.
 
-Calculated Risk:
+Loan Oft Loses:
   copies: 3
   data:
     tags: [check, risk]
-    lead: When you think you've made your own luck, it's usually stolen.
+    lead:
+      - You can take a serious risk to scrape by.
+      - When you think you've made your own luck, it's usually stolen.
     crunch:
-      - Take 1 Stress or remove this card from play until the next session.
-      - You achieve the main goal of your action.
+      - "If you take 1 Stress or remove this card from play until the next session: You achieve the main goal of your action."
 
 Slings and Arrows:
-  copies: 2
+  copies: 3
   data:
-    tags: [check]
+    tags: [check, sfx bad]
     lead: Your boots lose their grip. The clip's somehow empty. They caught you on video.
     crunch:
       - "In combat: Take 1 Wound."
-      - Something bad, but not defeat.
+      - Something bad, but not failure.
 
 Yon High Eastward Hill:
   data:
-    tags: [check]
+    tags: [check, sfx good]
     lead:
       - A secret stash cracked open. The killer's DNA beneath your ragged fingernails. The break of dawn.
-      - It will surprise you what the Lord hath done.
+      - It will surprise you what the Lord hath done. # A psalm.
     crunch:
+      - "If you drew this along with Slings and Arrows: Discard 1 of each."
       - Something good, but not what you wanted.
 
-Sacrifice:
+Martial Stalk:
   data:
     tags: [check]
-    lead: A chance to prove your dedication.
+    lead:
+      - A chance to prove your dedication.
     crunch:
-      - You may draw extra cards, one at a time. For each card, take 1 Stress or 1 Wound.
+      - "As many times as you like: Take 1 Stress or 1 Wound and draw another card."
 
-Red Herring:
-  copies: 3
+The Pale Cast of Thought:
+  copies: 2
   data:
-    tags: [check]
+    tags: [check, waste]
     lead: You've let precious moments go to waste.
 
 ##############
@@ -70,7 +75,7 @@ Angry:
 Blocked:
   data:
     tags: [shock]
-    lead: Your words do not get through.
+    lead: Your words do not get past your lips.
 
 Flustered:
   data:
@@ -100,7 +105,7 @@ Dizzy:
 Cowardly:
   data:
     tags: [shock]
-    lead: A choice of sneaking or running away.
+    lead: The choice is between sneaking and running away.
 
 Dissociated:
   data:
@@ -111,6 +116,11 @@ Exhausted:
   data:
     tags: [shock]
     lead: Your feet are heavy. You’d like to lie down.
+
+Faint:
+  data:
+    tags: [shock]
+    lead: The lights blur. You lose consciousness.
 
 Fierce:
   data:
@@ -185,12 +195,12 @@ Violent:
 Loud:
   data:
     tags: [shock]
-    lead: You scream, you rant, you whimper.
+    lead: You scream, rant and plead, until you can only whimper.
 
 Rattled:
   data:
     tags: [shock]
-    lead: You vent stress through a tic. For example, you may be crunching up your toes or repeating your own words.
+    lead: You know it looks like a tic, but it's working, so you wouldn't want to stop.
 
 #################
 # INSANITY DECK #
@@ -210,7 +220,7 @@ Atavism:
 Asceticism:
   data:
     tags: [insanity]
-    lead: You do not deserve, or do not have time for, what others may consider the basics of personal grooming, hygiene and polite conversation.
+    lead: You do not deserve, or do not have time for, the basics of personal grooming, hygiene and polite conversation.
     crunch: -1 Charm.
 
 Broken Dreams:
@@ -372,54 +382,70 @@ Tainted Wisdom:
 #############
 
 Money:
+  copies: 4
   data:
     tags: [life]
     lead: You're not in debt. You don't have to worry about food or a place to sleep.
 
 Love:
+  copies: 3
   data:
     tags: [life]
     lead: You're in a steady relationship. Your partner cares about you.
 
 Parenthood:
+  copies: 4
   data:
     tags: [life]
     lead: You get along with your kid.
 
 Career:
+  copies: 2
   data:
     tags: [life]
     lead: You're up for promotion. If you toe the line, you can really go places.
 
 Recognition:
+  copies: 2
   data:
     tags: [life]
     lead: Your coworkers admire your energy and skill.
 
 Friendship:
+  copies: 2
   data:
     tags: [life]
-    lead: You can tell your best buddy anything.
+    lead: You can tell your best buddy almost anything.
 
 Hobby:
+  copies: 3
   data:
     tags: [life]
     lead: You have a physical or creative outlet in your spare time.
 
 Mentor:
+  copies: 2
   data:
     tags: [life]
     lead: You still talk to the old timer who taught you everything you know.
 
 Heritage:
+  copies: 3
   data:
     tags: [life]
     lead: You know where you came from. You can go back.
 
 Therapist:
+  copies: 4
   data:
     tags: [life]
     lead: You have long-term professional help.
+
+Home:
+  copies: 3
+  data:
+    tags: [life]
+    lead: The place where you sleep feels calm and safe.
 
 ##############
 # WOUND DECK #
@@ -428,11 +454,24 @@ Therapist:
 ## No location:
 
 Lost a Lot of Blood:
+  copies: 5
   data:
-    tags: [wound, discretionary]
+    tags: [wound, discretionary, strain]
     lead:
       - Your skin is pale and cool to the touch.
       - Without a transfusion, you will go into shock.
+    recovery: 30
+    crunch: /FATALITY_CHECK/
+
+Infection:
+  copies: 3
+  data:
+    tags: [wound, discretionary, strain]
+    lead:
+      - Your veins are on fire.
+    recovery: 14
+    crunch: /FATALITY_CHECK/
+
 
 ## Head:
 
@@ -441,90 +480,107 @@ Sickening Pain:
     tags: [wound, head]
     lead: Too bad you're conscious.
     crunch: Take 1 Stress.
+    recovery: 3
 
 Concussion:
   data:
     tags: [wound, head]
-    lead:
-      - A mild brain injury and a massive headache.
-      - Heals in three weeks.
+    lead: A mild brain injury and a massive headache.
+    recovery: 14
 
 Spitting Teeth:
   data:
     tags: [wound, head]
     lead: You used to be so pretty.
+    recovery: 6
 
 Swimming Vision:
   data:
     tags: [wound, head]
     lead: For someone who just took a blow to the head, you're incredibly lucky.
-    crunch: -1 Perception for the scene.
+    crunch: -1 Perception.
+    recovery: 1
 
 Lost an Eye:
   data:
     tags: [wound, head]
-    lead:
-      - Those aren't tears on your cheek.
-      - Does not heal.
+    lead: Those aren't tears on your cheek.
+    recovery: 60
 
 Broken Nose:
   data:
     tags: [wound, head]
     lead: In the right line of work it's sort of cool.
+    recovery: 14
 
 Torn Ear:
   data:
     tags: [wound, head]
     lead: Lost some cartilage.
+    recovery: 6
 
 Facial Bruising:
   data:
     tags: [wound, head]
     lead: Cheek all swollen up.
+    recovery: 4
+
+Compression Fracture:
+  data:
+    tags: [wound, head]
+    lead: A broken neck means chronic back pain.
+    crunch: /FATALITY_CHECK/
 
 ## Torso:
 
 Coughing Up Blood:
   data:
-    tags: [wound, torso]
+    tags: [wound, torso, strain]
     lead: There's something wrong with your lungs.
+    recovery: 30
 
 Splintered Ribs:
   data:
     tags: [wound, torso]
     lead: Breathing doesn't normally feel this way.
+    recovery: 120
 
 Beat Up Inside:
   data:
-    tags: [wound, torso]
+    tags: [wound, torso, strain]
     lead: You'll be pissing blood for a week.
+    recovery: 60
 
 Heart Attack:
   data:
-    tags: [wound, torso]
+    tags: [wound, torso, strain]
     lead:
       - It starts with a sudden pain behind the breast bone.
       - You ought to lie down.
-    crunch: -1 Physique.
+    crunch: /FATALITY_CHECK/
+    recovery: 90
 
 Sucking Chest Wound:
   data:
-    tags: [wound, torso]
+    tags: [wound, torso, strain]
     lead: If you live, you'll be in injury rehab for a year.
-    crunch: -1 Physique.
+    crunch: /FATALITY_CHECK/
+    recovery: 210
 
 Ruptured Spleen:
   data:
     tags: [wound, torso]
     lead: There's a sharp pain in your left flank and shoulder. Better have that looked that.
+    recovery: 30
 
 Nagging Injury:
   data:
     tags: [wound, torso]
-    lead: Every morning, you'll remember how you got this.
+    lead: You'll remember how you got this.
 
 Winded:
   data:
     tags: [wound, torso]
     lead: It's not as bad you thought. You just need to catch your breath.
+    recovery: 1
 

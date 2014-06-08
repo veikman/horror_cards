@@ -13,17 +13,28 @@ SHOCK = T('shock')
 INSANITY = T('insanity')
 WOUND = T('wound')
 LIFE = T('life')
+STRAIN = T('strain')
+
+
+class WoundType(T):
+    def __init__(self, specstring):
+        name = '{} Wound'.format(specstring.capitalize())
+        super().__init__(specstring, full_name=name, subordinate_to=WOUND)
+        T.all_.append(self)
 
 ## Types of violence.
-BALLISTIC = T(VIOLENCE_BALLISTIC, subordinate_to=WOUND)
-CUT = T(VIOLENCE_CUT, subordinate_to=WOUND)
-BLUNT = T(VIOLENCE_BLUNT, subordinate_to=WOUND)
+BALLISTIC = WoundType(VIOLENCE_BALLISTIC)
+CUT = WoundType(VIOLENCE_CUT)
+BLUNT = WoundType(VIOLENCE_BLUNT)
 
 ## Other types of wounds.
-DISC = T('discretionary', subordinate_to=WOUND)
-TORSO = T('torso', subordinate_to=WOUND)
-HEAD = T('head', subordinate_to=WOUND)
+DISC = WoundType('discretionary')
+TORSO = WoundType('torso')
+HEAD = WoundType('head')
 
 ## For coloring only.
 SUCCESS = T('success', printing=False, subordinate_to=CHECK)
 RISK = T('risk', printing=False, subordinate_to=CHECK)
+SFX_GOOD = T('sfx good', printing=False, subordinate_to=CHECK)
+SFX_BAD = T('sfx bad', printing=False, subordinate_to=CHECK)
+WASTE = T('waste', printing=False, subordinate_to=CHECK)
