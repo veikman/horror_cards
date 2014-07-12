@@ -5,11 +5,12 @@ import yaml
 import collections
 
 import cardtypes
-import tags
+import hctags
 
 
 FILENAME = 'locations'
 FATALITY = ' ' + str(cardtypes.FATALITY)  # Markup for replacement.
+BLACKOUT = ' ' + str(cardtypes.BLACKOUT)  # Markup for replacement.
 
 HEAD = 'Head'
 NECK = 'Neck'
@@ -51,15 +52,15 @@ class BodyMap(dict):
         self['Left {}'.format(location)] = value
 
 
-BALLISTIC = BodyMap(tags.VIOLENCE_BALLISTIC,
+BALLISTIC = BodyMap(hctags.VIOLENCE_BALLISTIC,
                     3, 1, 9,
                     (1, 2, 2, 1),
                     (3, 1, 2, 0))
-CUT = BodyMap(tags.VIOLENCE_CUT,
+CUT = BodyMap(hctags.VIOLENCE_CUT,
               3, 1, 8,
               (2, 3, 4, 2),
               (3, 1, 2, 0))
-BLUNT = BodyMap(tags.VIOLENCE_BLUNT,
+BLUNT = BodyMap(hctags.VIOLENCE_BLUNT,
                 3, 1, 7,
                 (2, 3, 3, 3),
                 (3, 3, 3, 1))
@@ -68,7 +69,9 @@ BLUNT = BodyMap(tags.VIOLENCE_BLUNT,
 def describe(violence, location, number):
     error = 'Too many cards requested for {}, {}: {}.'
     error = error.format(violence, location, number)
+    torment = hctags.TORMENT.string.string
 
+    tags = ['wound']
     description = 'Seek medical attention.'
     crunch = None
     days = 4
@@ -78,7 +81,8 @@ def describe(violence, location, number):
     if location == TORSO:
         crunch = 'Draw 1 Torso Wound.'
 
-    if violence == tags.VIOLENCE_BALLISTIC:
+    if violence == hctags.VIOLENCE_BALLISTIC:
+        tags.append(hctags.VIOLENCE_BALLISTIC)
         days = 3 * MONTH
         if number in (0, 4):
             title = 'Bullet in the {}'.format(location)
@@ -127,6 +131,7 @@ def describe(violence, location, number):
                 crunch = 'You are dead.'
                 days = None
             elif location == TORSO:
+                tags.append(torment)
                 title = 'Gutshot'
                 description = "You're going to die, and it won't be fast."
                 crunch = 'Draw one card per hour from the Torso Wound deck.'
@@ -156,7 +161,8 @@ def describe(violence, location, number):
         else:
             raise ValueError(error)
 
-    elif violence == tags.VIOLENCE_CUT:
+    elif violence == hctags.VIOLENCE_CUT:
+        tags.append(hctags.VIOLENCE_CUT)
         days = 2 * MONTH
         if location == TORSO:
             if number in (0, 1):
@@ -164,6 +170,7 @@ def describe(violence, location, number):
                 days = 3 * MONTH
                 crunch = crunch + FATALITY
             elif number == 2:
+                tags.append(torment)
                 title = 'Stomach Cut Open'
                 description = "Yards of slippery rope."
                 crunch = 'Draw one card per minute from the Torso Wound deck.'
@@ -213,7 +220,8 @@ def describe(violence, location, number):
             else:
                 raise ValueError(error)
 
-    elif violence == tags.VIOLENCE_BLUNT:
+    elif violence == hctags.VIOLENCE_BLUNT:
+        tags.append(hctags.VIOLENCE_BLUNT)
         days = 3 * WEEK
         if location == TORSO:
             if number == 0:
@@ -221,6 +229,7 @@ def describe(violence, location, number):
                 days = 6 * WEEK
                 crunch = crunch + FATALITY
             elif number == 1:
+                tags.append(torment)
                 title = 'Battered Stomach'
             elif number == 2:
                 title = 'Wrenched Back'
@@ -236,8 +245,10 @@ def describe(violence, location, number):
                 crunch = None
                 days = 1 * WEEK
             elif number == 5:
+                tags.append(torment)
                 title = 'Battered Left Abdomen'
             elif number == 6:
+                tags.append(torment)
                 title = 'Battered Right Abdomen'
             else:
                 raise ValueError(error)
@@ -325,7 +336,22 @@ def describe(violence, location, number):
     else:
         raise ValueError('Unknown location.')
 
-    return title, description, crunch, days
+    if days and torment not in tags:
+        threshold = 55
+        if location in (HEAD, TORSO):
+            threshold = 40
+        elif HAND in location:
+            threshold = 80
+        if days >= threshold:
+            tags.append(torment)
+
+    if torment in tags:
+        if crunch:
+            crunch = crunch + BLACKOUT
+        else:
+            crunch = BLACKOUT.strip()
+
+    return tuple(tags), title, description, crunch, days
 
 
 def generate(folder):
@@ -344,16 +370,16 @@ def generate(folder):
             for location in bodymap:
                 for number in range(bodymap[location]):
                     text = describe(bodymap.violence, location, number)
-                    contents.append((bodymap.violence,) + text)
+                    contents.append(text)
         for data, copies in collections.Counter(contents).items():
             f.write(yaml.dump(writeup(copies, *data)))
 
 
-def writeup(copies, tag, title, description, crunch, recovery):
+def writeup(copies, tags, title, description, crunch, recovery):
     python = {title:
               {'copies': copies,
                'data':
-               {'tags': ['wound', tag],
+               {'tags': tags,
                 'lead': description}
                }
               }

@@ -3,7 +3,7 @@
 import cbg
 
 import hcstyle
-import tags
+import hctags
 
 
 class Title(cbg.svg.SVGField):
@@ -51,26 +51,26 @@ class Tagbox(cbg.svg.SVGField):
             return
         applied_tags = self.parent[0]
 
-        if tags.CHECK in applied_tags:
+        if hctags.CHECK in applied_tags:
             self.wardrobe = hcstyle.TAGS.but.colors_accent(hcstyle.BLACK)
-            if tags.SUCCESS in applied_tags:
+            if hctags.SUCCESS in applied_tags:
                 self.wardrobe = hcstyle.TAGS.but.colors_accent(hcstyle.GREEN)
-            if tags.RISK in applied_tags:
+            if hctags.RISK in applied_tags:
                 self.wardrobe = hcstyle.TAGS.but.colors_accent(hcstyle.PURPLE)
-            if tags.SFX_GOOD in applied_tags:
+            if hctags.SFX_GOOD in applied_tags:
                 self.wardrobe = hcstyle.TAGS.but.colors_accent(hcstyle.BLUE)
-            if tags.SFX_BAD in applied_tags:
+            if hctags.SFX_BAD in applied_tags:
                 self.wardrobe = hcstyle.TAGS.but.colors_accent(hcstyle.RED)
-            if tags.WASTE in applied_tags:
+            if hctags.WASTE in applied_tags:
                 self.wardrobe = hcstyle.TAGS.but.colors_accent(hcstyle.ORANGE)
-        elif tags.SHOCK in applied_tags:
+        elif hctags.SHOCK in applied_tags:
             self.wardrobe = hcstyle.TAGS.but.colors_accent(hcstyle.YELLOW)
             self.wardrobe.colors[cbg.style.CONTRAST] = hcstyle.BLACK
-        elif tags.INSANITY in applied_tags:
+        elif hctags.INSANITY in applied_tags:
             self.wardrobe = hcstyle.TAGS.but.colors_accent(hcstyle.BROWN)
-        elif tags.LIFE in applied_tags:
+        elif hctags.LIFE in applied_tags:
             self.wardrobe = hcstyle.TAGS.but.colors_accent(hcstyle.TURQUOISE)
-        elif tags.WOUND in applied_tags:
+        elif hctags.WOUND in applied_tags:
             self.wardrobe = hcstyle.TAGS.but.colors_accent(hcstyle.DARKRED)
 
         self.reset()
@@ -80,12 +80,12 @@ class Tagbox(cbg.svg.SVGField):
     def back(self, tree):
         '''Print a deck name on the back.'''
         applied_tags = self.parent[0]
-        eponymous = (tags.CHECK, tags.SHOCK, tags.INSANITY, tags.LIFE)
+        eponymous = (hctags.CHECK, hctags.SHOCK, hctags.INSANITY, hctags.LIFE)
 
         text = None
-        if tags.WOUND in applied_tags:
+        if hctags.WOUND in applied_tags:
             for t in applied_tags:
-                if t.subordinate_to == tags.WOUND:
+                if t.subordinate_to == hctags.WOUND:
                     text = t.full_name
                     break
         else:

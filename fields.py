@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
 from cbg.elements import CardContentField as F
-from cbg.tag import Tag as T
 import cbg.card
 import cbg.tag
 import cbg.elements
 import cbg.exc
 
 import hcdresser
+import hctags
 
 
 class Time(F):
@@ -26,10 +26,26 @@ class Time(F):
         super().fill((lead, amount * '⬜'))
 
 
+class InterpolatingCrunch(F):
+    def fill(self, strings):
+        applied_tags = self.parent.tags
+        if hctags.PSYCHOSIS in applied_tags:
+            strings.append("When you have as much Psychosis as Cool, "
+                           "you can't tell allies from enemies.")
+        if hctags.BREAKDOWN in applied_tags:
+            strings.append('When you have as much Breakdown as Cool, '
+                           'you try to kill yourself, or have a heart '
+                           'attack.')
+        super().fill(strings)
+
+    def not_in_spec(self):
+        self.fill([])
+
+
 TITLE = F(cbg.card.TITLE, hcdresser.Title)
-TAGS = cbg.tag.FieldOfTags('tags', hcdresser.Tagbox, T.all_)
+TAGS = cbg.tag.FieldOfTags('tags', hcdresser.Tagbox, cbg.tag.Tag.all_)
 LEAD = F('lead', hcdresser.Lead)
-CRUNCH = F('crunch', hcdresser.Crunch)
+CRUNCH = InterpolatingCrunch('crunch', hcdresser.Crunch)
 RECOVERY = Time('recovery', hcdresser.RecoveryTime)
 
 BASIC = ( TITLE

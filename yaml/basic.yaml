@@ -69,7 +69,7 @@ The Pale Cast of Thought:
 
 Angry:
   data:
-    tags: [shock]
+    tags: [shock, psychosis]
     lead: Somebody fucked up again.
 
 Blocked:
@@ -84,7 +84,7 @@ Flustered:
 
 Breathless:
   data:
-    tags: [shock]
+    tags: [shock, breakdown]
     lead: Your heartbeat bothers you. You can’t catch your breath.
 
 Clingy:
@@ -109,7 +109,7 @@ Cowardly:
 
 Dissociated:
   data:
-    tags: [shock]
+    tags: [shock, breakdown]
     lead: This wasn’t supposed to happen. It can’t be your fault. Why are you even here?
 
 Exhausted:
@@ -120,16 +120,17 @@ Exhausted:
 Faint:
   data:
     tags: [shock]
-    lead: The lights blur. You lose consciousness.
+    lead: The world is dim.
+    crunch: You lose consciousness.
 
 Fierce:
   data:
-    tags: [shock]
+    tags: [shock, psychosis]
     lead: You have the right idea, and the others need to listen. Of course you're not delusional.
 
 Frenzied:
   data:
-    tags: [shock]
+    tags: [shock, psychosis]
     lead: Did you see the fucking tentacles on that guy‽
 
 Nauseous:
@@ -139,12 +140,12 @@ Nauseous:
 
 Hallucinating:
   data:
-    tags: [shock]
+    tags: [shock, psychosis]
     lead: You see it everywhere until you look twice.
 
 Hateful:
   data:
-    tags: [shock]
+    tags: [shock, psychosis]
     lead: They’re pure evil.
 
 Poised:
@@ -159,8 +160,8 @@ Reckless:
 
 Reeling:
   data:
-    tags: [shock]
-    lead: You know you don't want to remember this. Don't think about it. You need something strong to wipe it out.
+    tags: [shock, breakdown]
+    lead: You don't want to remember this. Don't think about it. Wipe it out.
 
 Suggestible:
   data:
@@ -169,12 +170,12 @@ Suggestible:
 
 Terrified:
   data:
-    tags: [shock]
+    tags: [shock, breakdown]
     lead: Nightmares crouch around that corner.
 
 Thrilled:
   data:
-    tags: [shock]
+    tags: [shock, psychosis]
     lead: You feel strangely alive.
 
 Tired of Secrets:
@@ -189,12 +190,12 @@ Vertiginous:
 
 Violent:
   data:
-    tags: [shock]
+    tags: [shock, psychosis]
     lead: Destroy it.
 
 Loud:
   data:
-    tags: [shock]
+    tags: [shock, psychosis]
     lead: You scream, rant and plead, until you can only whimper.
 
 Rattled:
@@ -486,6 +487,7 @@ Concussion:
   data:
     tags: [wound, head]
     lead: A mild brain injury and a massive headache.
+    crunch: "When you take another Wound: Take 1 Stress or lose consciousness."
     recovery: 14
 
 Spitting Teeth:
@@ -527,9 +529,9 @@ Facial Bruising:
 
 Compression Fracture:
   data:
-    tags: [wound, head]
+    tags: [wound, head, torment]
     lead: A broken neck means chronic back pain.
-    crunch: /FATALITY_CHECK/
+    crunch: /FATALITY_CHECK/ /BLACKOUT/
 
 ## Torso:
 

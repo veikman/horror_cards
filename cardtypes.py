@@ -8,9 +8,11 @@ import fields
 
 
 FATALITY = S('FATALITY_CHECK', ('When you gain this: Check Physique minus '
-             'your total Strain to stay alive.'))
+             'Strain to stay alive.'))
+BLACKOUT = S('BLACKOUT', ('When you gain this: Take 1 Stress or lose '
+                          'consciousness.'))
 
-TOKENS = (FATALITY,)
+TOKENS = (FATALITY, BLACKOUT)
 
 
 class BasicCard(cbg.card.HumanReadablePlayingCard):
