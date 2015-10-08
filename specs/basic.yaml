@@ -1,19 +1,18 @@
 ---
 
-DECK METADATA:
-  GAME: Horror Cards
-  TITLE: basic cards
-  DEFAULTS:
+metadata:
+  game: Horror Cards
+  title: basic cards
+  defaults:
     copies: 1
 
 ###############
 # ACTION DECK #
 ###############
 
-# Titles are all Hamlet quotes.
-
 The Triumph of His Pledge:
-  copies: 2
+  metadata:
+    copies: 2
   data:
     tags: [check, success]
     lead: You pull through on this one.
@@ -21,7 +20,8 @@ The Triumph of His Pledge:
       - You achieve the main goal of your action.
 
 Loan Oft Loses:
-  copies: 3
+  metadata:
+    copies: 3
   data:
     tags: [check, risk]
     lead:
@@ -31,7 +31,8 @@ Loan Oft Loses:
       - "If you take 1 Stress or remove this card from play until the next session: You achieve the main goal of your action."
 
 Slings and Arrows:
-  copies: 3
+  metadata:
+    copies: 3
   data:
     tags: [check, sfx bad]
     lead: Your boots lose their grip. The clip's somehow empty. They caught you on video.
@@ -44,7 +45,7 @@ Yon High Eastward Hill:
     tags: [check, sfx good]
     lead:
       - A secret stash cracked open. The killer's DNA beneath your ragged fingernails. The break of dawn.
-      - It will surprise you what the Lord hath done. # A psalm.
+      - It will surprise you what the Lord hath done.  # A psalm.
     crunch:
       - "If you drew this along with Slings and Arrows: Discard 1 of each."
       - Something good, but not what you wanted.
@@ -58,7 +59,8 @@ Martial Stalk:
       - "As many times as you like: Take 1 Stress or 1 Wound and draw another card."
 
 The Pale Cast of Thought:
-  copies: 2
+  metadata:
+    copies: 2
   data:
     tags: [check, waste]
     lead: You've let precious moments go to waste.
@@ -126,7 +128,7 @@ Faint:
 Fierce:
   data:
     tags: [shock, psychosis]
-    lead: You have the right idea, and the others need to listen. Of course you're not delusional.
+    lead: Of course you're not delusional. You have the right idea, and the others need to listen.
 
 Frenzied:
   data:
@@ -383,67 +385,78 @@ Tainted Wisdom:
 #############
 
 Money:
-  copies: 4
+  metadata:
+    copies: 4
   data:
     tags: [life]
     lead: You're not in debt. You don't have to worry about food or a place to sleep.
 
 Love:
-  copies: 3
+  metadata:
+    copies: 3
   data:
     tags: [life]
     lead: You're in a steady relationship. Your partner cares about you.
 
 Parenthood:
-  copies: 4
+  metadata:
+    copies: 4
   data:
     tags: [life]
     lead: You get along with your kid.
 
 Career:
-  copies: 2
+  metadata:
+    copies: 2
   data:
     tags: [life]
     lead: You're up for promotion. If you toe the line, you can really go places.
 
 Recognition:
-  copies: 2
+  metadata:
+    copies: 2
   data:
     tags: [life]
-    lead: Your coworkers admire your energy and skill.
+    lead: Your peers admire your energy and skill.
 
 Friendship:
-  copies: 2
+  metadata:
+    copies: 2
   data:
     tags: [life]
     lead: You can tell your best buddy almost anything.
 
 Hobby:
-  copies: 3
+  metadata:
+    copies: 3
   data:
     tags: [life]
     lead: You have a physical or creative outlet in your spare time.
 
 Mentor:
-  copies: 2
+  metadata:
+    copies: 2
   data:
     tags: [life]
     lead: You still talk to the old timer who taught you everything you know.
 
 Heritage:
-  copies: 3
+  metadata:
+    copies: 3
   data:
     tags: [life]
     lead: You know where you came from. You can go back.
 
 Therapist:
-  copies: 4
+  metadata:
+    copies: 4
   data:
     tags: [life]
     lead: You have long-term professional help.
 
 Home:
-  copies: 3
+  metadata:
+    copies: 3
   data:
     tags: [life]
     lead: The place where you sleep feels calm and safe.
@@ -455,23 +468,25 @@ Home:
 ## No location:
 
 Lost a Lot of Blood:
-  copies: 5
+  metadata:
+    copies: 5
   data:
     tags: [wound, discretionary, strain]
     lead:
       - Your skin is pale and cool to the touch.
       - Without a transfusion, you will go into shock.
     recovery: 30
-    crunch: /FATALITY_CHECK/
+    crunch: "{{fatality}}"
 
 Infection:
-  copies: 3
+  metadata:
+    copies: 3
   data:
     tags: [wound, discretionary, strain]
     lead:
       - Your veins are on fire.
     recovery: 14
-    crunch: /FATALITY_CHECK/
+    crunch: "{{fatality}}"
 
 
 ## Head:
@@ -531,7 +546,7 @@ Compression Fracture:
   data:
     tags: [wound, head, torment]
     lead: A broken neck means chronic back pain.
-    crunch: /FATALITY_CHECK/ /BLACKOUT/
+    crunch: "{{fatality}} {{blackout}}"
 
 ## Torso:
 
@@ -559,14 +574,14 @@ Heart Attack:
     lead:
       - It starts with a sudden pain behind the breast bone.
       - You ought to lie down.
-    crunch: /FATALITY_CHECK/
+    crunch: "{{fatality}}"
     recovery: 90
 
 Sucking Chest Wound:
   data:
     tags: [wound, torso, strain]
     lead: If you live, you'll be in injury rehab for a year.
-    crunch: /FATALITY_CHECK/
+    crunch: "{{fatality}}"
     recovery: 210
 
 Ruptured Spleen:

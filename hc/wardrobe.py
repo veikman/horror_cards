@@ -2,7 +2,8 @@
 
 import cbg
 
-## Typesetting:
+
+# Typesetting:
 
 BVS = cbg.style.FontFamily('Bitstream Vera Sans', 0.59, 1.1)
 
@@ -15,11 +16,10 @@ FONTS_TAGS = {cbg.style.MAIN: CENTERED_BOLD}
 FONTS_BODY = {cbg.style.MAIN: LEFT}
 FONTS_FLUFF = {cbg.style.MAIN: ITALIC}
 
-## Color tuples:
+# Color tuples:
 
-BLACK = (cbg.style.COLOR_BLACK,)
-WHITE = (cbg.style.COLOR_WHITE,)
-GRAY_50 = (cbg.style.COLOR_GRAY_50,)
+BLACK = (cbg.sample.color.BLACK,)
+WHITE = (cbg.sample.color.WHITE,)
 
 RED = ('#bb3333',)
 ORANGE = ('#ee8833',)
@@ -37,7 +37,11 @@ COLORS_BASIC = {cbg.style.MAIN: BLACK,
                 cbg.style.ACCENT: TURQUOISE,
                 cbg.style.CONTRAST: WHITE}
 
-TITLE = cbg.style.Wardrobe(cbg.size.FONT_TITLE_ME, FONTS_TITLE, COLORS_BASIC)
-TAGS = cbg.style.Wardrobe(cbg.size.FONT_TAGS_ME, FONTS_TITLE, COLORS_BASIC)
-BODY = cbg.style.Wardrobe(cbg.size.FONT_BODY_ME, FONTS_BODY, COLORS_BASIC)
-FINE = cbg.style.Wardrobe(cbg.size.FONT_FINEPRINT_ME, FONTS_FLUFF, COLORS_BASIC)
+TITLE = cbg.style.Wardrobe(cbg.sample.size.FONT_TITLE_ME,
+                           FONTS_TITLE, COLORS_BASIC)
+TAGS = cbg.style.Wardrobe(cbg.sample.size.FONT_TAGS_ME,
+                          FONTS_TITLE, COLORS_BASIC)
+BODY = cbg.style.Wardrobe(cbg.sample.size.FONT_BODY_ME,
+                          FONTS_BODY, COLORS_BASIC)
+FINE = cbg.style.Wardrobe(cbg.sample.size.FONT_FINEPRINT_ME,
+                          FONTS_FLUFF, COLORS_BASIC)

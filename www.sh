@@ -3,6 +3,8 @@
 
 W=~/w/games_hc_
 
-./init.py -w tag=check -f ${W}check.pdf
-./init.py -w tag=life -g -f ${W}life.pdf
+for word in check life insanity shock wound
+do
+  ./init.py -w tag=$word -f ${W}$word.pdf
+done
 

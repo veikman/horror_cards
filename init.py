@@ -4,26 +4,26 @@
 
 Project began on 2014-03-28.
 
+TODO: weapons
+TODO: bizarre wound types
+TODO: stat cards, skill cards
+
 @author: Viktor Eikman <viktor.eikman@gmail.com>
 
 '''
 
 import cbg
 
-import cardtypes
-import location
+import hc
 
-DECKS = {'basic': cardtypes.BasicCard,
-         location.FILENAME: cardtypes.BasicCard}
 
-## TODO: weapons
-## TODO: bizarre wound types
-## TODO: stat cards, skill cards
+DECKS = {'basic': hc.card.BasicCard,
+         hc.location.FILENAME: hc.card.BasicCard}
 
 
 def main():
     app = cbg.app.Application('Horror Cards', DECKS)
-    location.generate('yaml')
+    hc.location.generate(app.folder_specs)
     app.execute()
     return 0
 
