@@ -82,9 +82,7 @@ class Tagbox(cbg.svg.SVGField):
 
     def back(self, tree):
         '''Print a deck name on the back.'''
-        applied_tags = self.parent[0]
-        eponyms = (hc.tags.CHECK, hc.tags.SHOCK,
-                   hc.tags.INSANITY, hc.tags.LIFE)
+        applied_tags = self.parent
 
         text = None
         if hc.tags.WOUND in applied_tags:
@@ -93,7 +91,8 @@ class Tagbox(cbg.svg.SVGField):
                     text = t.full_name
                     break
         else:
-            for t in eponyms:
+            for t in (hc.tags.CHECK, hc.tags.SHOCK,
+                      hc.tags.INSANITY, hc.tags.LIFE):
                 if t in applied_tags:
                     text = str(t).capitalize()
                     break
@@ -103,4 +102,4 @@ class Tagbox(cbg.svg.SVGField):
             raise AttributeError(s.format(applied_tags))
 
         # Borrow functionality from the Title dresser above.
-        cbg.svg.stylist(Title, self.parent, text).front(tree)
+        Title.as_stylist(self.parent, text).front(tree)
