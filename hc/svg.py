@@ -6,20 +6,25 @@ import hc.wardrobe
 import hc.tags
 
 
-class Card(cbg.svg.SVGCard):
+class CardFront(cbg.svg.presenter.CardFront):
     wardrobe = cbg.sample.wardrobe.WARDROBE
     size = cbg.sample.size.MINI_EURO
 
 
-class Title(cbg.svg.SVGField):
+class CardBack(cbg.svg.presenter.CardBack):
+    wardrobe = cbg.sample.wardrobe.WARDROBE
+    size = cbg.sample.size.MINI_EURO
+
+
+class Title(cbg.svg.presenter.FieldOfText):
     wardrobe = hc.wardrobe.TITLE
 
 
-class Lead(cbg.svg.SVGField):
+class Lead(cbg.svg.presenter.FieldOfText):
     wardrobe = hc.wardrobe.BODY
 
 
-class Crunch(cbg.svg.SVGField):
+class Crunch(cbg.svg.presenter.FieldOfText):
     wardrobe = hc.wardrobe.FINE
 
     def set_up_paragraph(self):
@@ -27,29 +32,35 @@ class Crunch(cbg.svg.SVGField):
         self.bottom_up()
 
 
-class RecoveryTime(cbg.svg.SVGField):
+class RecoveryTime(cbg.svg.presenter.FieldBase):
     wardrobe = hc.wardrobe.BODY
 
-    def front(self, tree):
-        if not self.parent:
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        if not self.content_source:
             # No recovery time.
             return
-        self.reset()
+
+        lead, boxes = self.content_source
+
         self.bottom_up()
-        lead, boxes = self.parent
         self.wardrobe.size = cbg.size.FontSize(7, after_paragraph_factor=0)
-        self.insert_text(tree, str(boxes))
+
+        self.insert_text(str(boxes))
+
         self.wardrobe.reset()
-        self.insert_text(tree, str(lead))
+        self.insert_text(str(lead))
 
 
-class Tagbox(cbg.svg.SVGField):
+class Tagbox(cbg.svg.presenter.FieldBase):
     wardrobe = hc.wardrobe.TAGS
 
-    def front(self, tree):
-        if not self.parent:
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if not self.content_source:
             return
-        applied_tags = self.parent
+        applied_tags = self.content_source
 
         def accent(color):
             self.wardrobe = hc.wardrobe.TAGS.but.colors_accent(color)
@@ -76,14 +87,19 @@ class Tagbox(cbg.svg.SVGField):
         elif hc.tags.WOUND in applied_tags:
             accent(hc.wardrobe.DARKRED)
 
-        self.reset()
         self.bottom_up()
-        self.insert_tagbox(tree, str(applied_tags))
+        self.insert_tagbox(str(applied_tags))
 
-    def back(self, tree):
+
+class StackName(cbg.svg.presenter.FieldBase):
+
+    wardrobe = hc.wardrobe.TITLE
+
+    def __init__(self, *args, **kwargs):
         '''Print a deck name on the back.'''
-        applied_tags = self.parent
+        super().__init__(*args, **kwargs)
 
+        applied_tags = self.content_source.parent.tags
         text = None
         if hc.tags.WOUND in applied_tags:
             for t in applied_tags:
@@ -97,9 +113,8 @@ class Tagbox(cbg.svg.SVGField):
                     text = str(t).capitalize()
                     break
 
-        if text is None:
+        if not text:
             s = 'No label on back side with {}.'
             raise AttributeError(s.format(applied_tags))
 
-        # Borrow functionality from the Title dresser above.
-        Title.as_stylist(self.parent, text).front(tree)
+        self.insert_text(text)

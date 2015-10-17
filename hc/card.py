@@ -6,9 +6,11 @@ import cbg
 import hc.fields
 
 
-class BasicCard(cbg.card.HumanReadablePlayingCard):
+class BasicCard(cbg.content.card.Card):
     field_classes = hc.fields.BASIC
-    presenter_class = hc.svg.Card
+
+    presenter_class_front = hc.svg.CardFront
+    presenter_class_back = hc.svg.CardBack
 
     @property
     def sorting_keys(self):

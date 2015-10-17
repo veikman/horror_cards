@@ -6,30 +6,30 @@ import cbg
 import hc
 
 
-class Paragraph(cbg.elements.Paragraph):
+class _OvidParagraph(cbg.content.elements.Paragraph):
     def process(self, raw_data):
         markup = ovid.producing.TwoWaySignatureShorthand
         return markup.collective_sub(str(raw_data))
 
 
-class TitleField(cbg.elements.CardContentField):
-    key = cbg.card.HumanReadablePlayingCard.key_title
-    presenter_class = hc.svg.Title
+class TitleField(cbg.content.field.Field):
+    key = cbg.content.card.Card.key_title
+    presenter_class_front = hc.svg.Title
 
 
-class TagField(cbg.tag.AdvancedCardTagField):
-    presenter_class = hc.svg.Tagbox
+class TagField(cbg.content.tag.AdvancedTagField):
+    presenter_class_front = hc.svg.Tagbox
 
 
-class LeadField(cbg.elements.CardContentField):
+class LeadField(cbg.content.field.Field):
     key = 'lead'
-    presenter_class = hc.svg.Lead
+    presenter_class_front = hc.svg.Lead
 
 
-class CrunchField(cbg.elements.CardContentField):
+class CrunchField(cbg.content.field.Field):
     key = 'crunch'
-    presenter_class = hc.svg.Crunch
-    paragraph_class = Paragraph
+    presenter_class_front = hc.svg.Crunch
+    paragraph_class = _OvidParagraph
 
     def in_spec(self, strings):
         strings = list(cbg.misc.make_listlike(strings))
@@ -47,11 +47,11 @@ class CrunchField(cbg.elements.CardContentField):
         self.in_spec(())
 
 
-class TimeField(cbg.elements.CardContentField):
+class TimeField(cbg.content.field.Field):
     '''A field for ticking off units of time until something happens.'''
 
     key = 'recovery'
-    presenter_class = hc.svg.RecoveryTime
+    presenter_class_front = hc.svg.RecoveryTime
 
     def in_spec(self, amount):
         unit = 'days'
@@ -66,9 +66,14 @@ class TimeField(cbg.elements.CardContentField):
         super().in_spec((lead, amount * '⬜'))
 
 
+class StackNameField(cbg.content.field.Field):
+    presenter_class_back = hc.svg.StackName
+
+
 BASIC = (TitleField,
          TagField,
          LeadField,
          CrunchField,
          TimeField,
+         StackNameField,
          )

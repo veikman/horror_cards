@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from cbg.tag import AdvancedTag
+from cbg.content.tag import AdvancedTag
 
 
 class WoundType(AdvancedTag):
