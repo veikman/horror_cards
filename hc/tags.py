@@ -8,6 +8,9 @@ class WoundType(AdvancedTag):
         name = '{} Wound'.format(specstring.capitalize())
         super().__init__(specstring, full_name=name, subordinate_to=WOUND)
 
+    def __str__(self):
+        return self.key
+
 
 # Mere strings.
 VIOLENCE_BALLISTIC = 'ballistic'

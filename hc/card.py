@@ -4,11 +4,26 @@
 import cbg
 
 import hc.fields
+import hc.svg
 
 
 class BasicCard(cbg.content.card.Card):
-    field_classes = hc.fields.BASIC
+    class FromTop(cbg.content.field.Layout):
+        plan = (hc.fields.StackNameField,
+                hc.fields.TitleField,
+                hc.fields.TagField,
+                hc.fields.LeadField,
+                )
+        presenter_class_front = hc.svg.CardFront.LayoutFromTop
+        presenter_class_back = hc.svg.CardBack.LayoutFromTop
 
+    class FromBottom(cbg.content.field.Layout):
+        plan = (hc.fields.CrunchField,
+                hc.fields.TimeField,
+                )
+        presenter_class_front = hc.svg.CardFront.LayoutFromBottom
+
+    plan = (FromTop, FromBottom)
     presenter_class_front = hc.svg.CardFront
     presenter_class_back = hc.svg.CardBack
 
