@@ -36,18 +36,60 @@ class CardFront(cbg.svg.card.CardFront):
             self.cursor.slide(0.5)
             super().present()
 
-    Wardrobe = cbg.sample.wardrobe.Frame
     size = cbg.sample.size.MINI_EURO
 
 
 class CardBack(cbg.svg.card.CardBack):
-    Wardrobe = cbg.sample.wardrobe.Frame
     size = cbg.sample.size.MINI_EURO
 
     class LayoutFromTop(CardFront.LayoutFromTop):
         def present(self):
             self.cursor.slide(0.3 * self.size[1])
             super().present()
+
+    def present(self):
+        '''Apply raster art in the shape of the front of the card.
+
+        This does not use self.wardrobe.
+
+        '''
+
+        applied_tags = self.field.card.tags
+        filename = None
+
+        tag_map = {hc.tags.CHECK.key: 'check.jpg',
+                   hc.tags.SHOCK.key: 'shock.jpg',
+                   hc.tags.INSANITY.key: 'insanity.jpg',
+                   hc.tags.LIFE.key: 'life.jpg',
+                   hc.tags.BALLISTIC.key: 'wound_ballistic.jpg',
+                   hc.tags.CUT.key: 'wound_cut.jpg',
+                   hc.tags.BLUNT.key: 'wound_blunt.jpg',
+                   hc.tags.DISC.key: 'wound_discretionary.jpg',
+                   hc.tags.TORSO.key: 'wound_torso.jpg',
+                   hc.tags.HEAD.key: 'wound_head.jpg',
+                   }
+
+        for tag in applied_tags:
+            filename = tag_map.get(tag.key, filename)
+
+        if not filename:
+            s = 'No image with {}.'
+            raise AttributeError(s.format(applied_tags))
+
+        folder = r'raster_inclusion/'
+        filename = folder + filename
+
+        r = CardFront.Wardrobe.modes[cw.MAIN].thickness  # Match front.
+        shape = cbg.svg.shapes.Rect.new(self.origin, self.size,
+                                        rounding=1.5 * r)
+        clip = cbg.svg.misc.ClipPath.new(children=(shape,))
+        self.define(clip)
+        id_ = 'url(#{})'.format(clip.get('id'))
+        art = cbg.svg.misc.Image.new(self.origin, self.size, filename,
+                                     clip_path=id_)
+        self.append(art)
+
+        self.recurse()
 
 
 class Title(cbg.svg.presenter.TextPresenter):
@@ -155,7 +197,11 @@ class Tagbox(cbg.svg.tag.TagBanner):
 
 class StackName(cbg.svg.presenter.SVGPresenter):
 
-    Wardrobe = Title.Wardrobe
+    class Wardrobe(cw.Wardrobe):
+        modes = {cw.MAIN: cw.Mode(font=cbg.sample.font.BITSTREAM_VERA_SANS,
+                                  fill_colors=WHITE, stroke_colors=WHITE,
+                                  thickness=0.05, bold=True, middle=True)}
+        font_size = 4.5
 
     def present(self):
         '''Print a deck name on the back.'''
