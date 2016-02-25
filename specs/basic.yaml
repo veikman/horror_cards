@@ -51,7 +51,7 @@ Yon High Eastward Hill:
 
 Martial Stalk:
   data:
-    tags: [check]
+    tags: [check, desperation]
     lead:
       - A chance to prove your dedication.
     crunch:

@@ -10,16 +10,18 @@ import hc.tags
 
 BLACK = (cbg.sample.color.BLACK,)
 WHITE = (cbg.sample.color.WHITE,)
-RED = ('#bb3333',)
-ORANGE = ('#ee8833',)
-YELLOW = ('#eeee33',)
-GREEN = ('#33aa33',)
-BLUE = ('#333388',)
-PURPLE = ('#773377',)
-DARKRED = ('#770000',)
-SWAMP = ('#44bb88',)
-BROWN = ('#aa8888',)
-TURQUOISE = ('#2299aa',)
+
+SEMANTIC = {hc.tags.SUCCESS: ('#33aa33',),
+            hc.tags.RISK: ('#297d8a',),
+            hc.tags.SFX_GOOD: ('#4549ff',),
+            hc.tags.SFX_BAD: ('#bb3333',),
+            hc.tags.WASTE: ('#666666',),
+            hc.tags.DESPERATION: ('#773377',),
+            hc.tags.SHOCK: ('#f7d482',),
+            hc.tags.INSANITY: ('#c9bda7',),
+            hc.tags.LIFE: ('#a2ac5f',),
+            hc.tags.WOUND: ('#770000',),
+            }
 
 
 # Presenter and wardrobe classes.
@@ -45,6 +47,7 @@ class CardBack(cbg.svg.card.CardBack):
     class LayoutFromTop(CardFront.LayoutFromTop):
         def present(self):
             self.cursor.slide(0.3 * self.size[1])
+
             super().present()
 
     def present(self):
@@ -123,7 +126,7 @@ class RecoveryTime(cbg.svg.presenter.IndentedPresenter):
     class BoxRow(cbg.svg.presenter.SVGPresenter):
         class Wardrobe(cw.Wardrobe):
             modes = {cw.MAIN: cw.Mode(thickness=0.4, fill_colors=('none',),
-                                      stroke_colors=DARKRED)}
+                                      stroke_colors=SEMANTIC[hc.tags.WOUND])}
 
         def present(self):
             self.cursor.slide(4.7)
@@ -140,11 +143,11 @@ class Tagbox(cbg.svg.tag.TagBanner):
         modes = {cw.MAIN: cw.Mode(font=cbg.sample.font.BITSTREAM_VERA_SANS,
                                   stroke_colors=BLACK, bold=True, middle=True),
                  cw.INACTIVE: cw.Mode(),
-                 cw.BACKGROUND: cw.Mode(stroke_colors=TURQUOISE)}
+                 cw.BACKGROUND: cw.Mode(stroke_colors=BLACK)}
 
     cursor_class = None
 
-    def _choose_box_mode(self):
+    def _choose_line_mode(self, _):
         '''An override.'''
         if not self.field:
             return self.wardrobe.set_mode(cw.INACTIVE)
@@ -153,32 +156,18 @@ class Tagbox(cbg.svg.tag.TagBanner):
 
         # Change the wardrobe based on applied tags.
         applied_tags = self.field.card.tags
-        if hc.tags.CHECK in applied_tags:
-            self.wardrobe.mode.stroke_colors = BLACK
-            if hc.tags.SUCCESS in applied_tags:
-                self.wardrobe.mode.stroke_colors = GREEN
-            if hc.tags.RISK in applied_tags:
-                self.wardrobe.mode.stroke_colors = PURPLE
-            if hc.tags.SFX_GOOD in applied_tags:
-                self.wardrobe.mode.stroke_colors = BLUE
-            if hc.tags.SFX_BAD in applied_tags:
-                self.wardrobe.mode.stroke_colors = RED
-            if hc.tags.WASTE in applied_tags:
-                self.wardrobe.mode.stroke_colors = ORANGE
-        elif hc.tags.SHOCK in applied_tags:
-            self.wardrobe.mode.stroke_colors = YELLOW
-        elif hc.tags.INSANITY in applied_tags:
-            self.wardrobe.mode.stroke_colors = BROWN
-        elif hc.tags.LIFE in applied_tags:
-            self.wardrobe.mode.stroke_colors = TURQUOISE
-        elif hc.tags.WOUND in applied_tags:
-            self.wardrobe.mode.stroke_colors = DARKRED
-        else:
-            # Back to default. Note we are in fact changing the class, for
-            # this presenter type as well as its inheritor.
-            self.wardrobe.mode.stroke_colors = BLACK
+        for tag in applied_tags:
+            try:
+                self.wardrobe.mode.stroke_colors = SEMANTIC[tag]
+            except KeyError:
+                continue
+            else:
+                return
 
-    def _choose_text_mode(self):
+        s = 'No color for tags "{}".'
+        raise ValueError(s.format(tuple(map(str, applied_tags))))
+
+    def _choose_text_mode(self, _):
         '''An override.'''
         if not self.field:
             return self.wardrobe.set_mode(cw.INACTIVE)
@@ -195,16 +184,22 @@ class Tagbox(cbg.svg.tag.TagBanner):
             self.wardrobe.mode.thickness = 0.02
 
 
-class StackName(cbg.svg.presenter.SVGPresenter):
+class StackName(Tagbox, cbg.svg.presenter.IndentedPresenter):
+    '''White text on black, based on tags and therefore on Tagbox.
+
+    Indented to show more of the raster card art.
+
+    '''
+
+    indentation = cbg.misc.Compass(0, 1.5)
 
     class Wardrobe(cw.Wardrobe):
         modes = {cw.MAIN: cw.Mode(font=cbg.sample.font.BITSTREAM_VERA_SANS,
-                                  fill_colors=WHITE, stroke_colors=WHITE,
-                                  thickness=0.05, bold=True, middle=True)}
+                                  fill_colors=WHITE, bold=True, middle=True),
+                 cw.BACKGROUND: cw.Mode(stroke_colors=BLACK)}
         font_size = 4.5
 
     def present(self):
-        '''Print a deck name on the back.'''
         applied_tags = self.field.card.tags
         text = None
         if hc.tags.WOUND in applied_tags:
@@ -223,4 +218,12 @@ class StackName(cbg.svg.presenter.SVGPresenter):
             s = 'No label on back side with {}.'
             raise AttributeError(s.format(applied_tags))
 
-        self.insert_paragraph(text)
+        self._insert_banner_line(text)
+        self._insert_banner_text(text)
+
+    def _choose_line_mode(self, _):
+        '''An override.'''
+        self.wardrobe.set_mode(cw.BACKGROUND)
+
+    def _choose_text_mode(self, _):
+        self.wardrobe.set_mode(cw.MAIN)

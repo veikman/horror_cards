@@ -44,6 +44,7 @@ TORMENT = AdvancedTag('torment', printing=False)
 # For coloring only.
 SUCCESS = AdvancedTag('success', printing=False, subordinate_to=CHECK)
 RISK = AdvancedTag('risk', printing=False, subordinate_to=CHECK)
+DESPERATION = AdvancedTag('desperation', printing=False, subordinate_to=CHECK)
 SFX_GOOD = AdvancedTag('sfx good', printing=False, subordinate_to=CHECK)
 SFX_BAD = AdvancedTag('sfx bad', printing=False, subordinate_to=CHECK)
 WASTE = AdvancedTag('waste', printing=False, subordinate_to=CHECK)
