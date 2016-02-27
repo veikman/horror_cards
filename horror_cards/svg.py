@@ -1,4 +1,10 @@
 # -*- coding: utf-8 -*-
+'''SVG presenters used by card content managers.
+
+@author: Viktor Eikman <viktor.eikman@gmail.com>
+
+'''
+
 
 import cbg
 import cbg.svg.wardrobe as cw
@@ -124,8 +130,9 @@ class RecoveryTime(cbg.svg.presenter.SVGPresenter):
         indentation = cbg.misc.Compass(1, 1)
 
         class Wardrobe(cw.Wardrobe):
-            modes = {cw.MAIN: cw.Mode(thickness=0.4, fill_colors=('none',),
-                                      stroke_colors=SEMANTIC[horror_cards.tags.WOUND])}
+            modes = {cw.MAIN:
+                     cw.Mode(thickness=0.4, fill_colors=('none',),
+                             stroke_colors=SEMANTIC[horror_cards.tags.WOUND])}
 
         def present(self):
             n_boxes = self.field.content

@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
-'''Basic card types, slightly more abstract than decks.'''
+'''Basic card types, slightly more abstract than decks.
+
+@author: Viktor Eikman <viktor.eikman@gmail.com>
+
+'''
+
 
 import cbg
 
@@ -29,13 +34,7 @@ class BasicCard(cbg.content.card.Card):
 
     @property
     def sorting_keys(self):
-        '''An iterable unique to the card type.
-
-        Designed to allow the built-in sorted() function to put the card
-        in a good place, relative to others in its deck, for the purpose
-        of reading through the deck in electronic form.
-
-        '''
+        '''An iterable unique to the card type.'''
         tag_values = sum([t.sorting_value for t in self.tags])
         subset = filter(lambda t: not t.subordinate_to, self.tags)
         tag_names = str(sorted(map(str, subset)))

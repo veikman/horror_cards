@@ -1,4 +1,13 @@
 # -*- coding: utf-8 -*-
+'''Tags for cards.
+
+Tags are used to organize the decks, to control SVG coloring, and for special
+rules shared between several cards.
+
+@author: Viktor Eikman <viktor.eikman@gmail.com>
+
+'''
+
 
 from cbg.content.tag import AdvancedTag
 

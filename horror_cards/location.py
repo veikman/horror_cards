@@ -1,5 +1,16 @@
 # -*- coding: utf-8 -*-
-'''Wound cards for initial hits, by type of trauma and hit location.'''
+'''Location-based Wound card generator.
+
+This module generates specifications for the content of the larger Wound
+decks in the game: Blunt, Cut and Ballistic Wounds.
+
+The specifics are generated programmatically because there are strong
+patterns in the distribution of hit locations etc. between the decks.
+
+@author: Viktor Eikman <viktor.eikman@gmail.com>
+
+'''
+
 
 import yaml
 import collections
@@ -35,6 +46,8 @@ MONTH = 30
 
 
 class BodyMap(dict):
+    '''Relative probabilities of hitting various parts of the body.'''
+
     library = []
 
     def __init__(self, violence, head, neck, torso, arm, leg):
@@ -69,7 +82,7 @@ BLUNT = BodyMap(horror_cards.tags.VIOLENCE_BLUNT,
 def describe(violence, location, number):
     error = 'Too many cards requested for {}, {}: {}.'
     error = error.format(violence, location, number)
-    torment = str(horror_cards.tags.TORMENT)
+    torment = horror_cards.tags.TORMENT.key
 
     tags = ['wound']
     fluff = None

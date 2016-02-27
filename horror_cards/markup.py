@@ -1,4 +1,10 @@
 # -*- coding: utf-8 -*-
+'''String substitution markup.
+
+@author: Viktor Eikman <viktor.eikman@gmail.com>
+
+'''
+
 
 import ovid
 

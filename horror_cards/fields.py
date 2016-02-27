@@ -1,4 +1,10 @@
 # -*- coding: utf-8 -*-
+'''Fields for content.
+
+@author: Viktor Eikman <viktor.eikman@gmail.com>
+
+'''
+
 
 import ovid
 import cbg
@@ -7,6 +13,8 @@ import horror_cards
 
 
 class _OvidParagraph(cbg.content.text.Paragraph):
+    '''A paragraph sensitive to Ovid markup.'''
+
     @classmethod
     def format_text(cls, raw_data):
         markup = ovid.producing.TwoWaySignatureShorthand
@@ -23,11 +31,15 @@ class TagField(cbg.content.tag.AdvancedTagField):
 
 
 class FluffField(cbg.content.text.TextField):
+    '''A field for non-technical information.'''
+
     key = 'fluff'
     presenter_class_front = horror_cards.svg.Fluff
 
 
 class CrunchField(cbg.content.text.TextField):
+    '''A field for rules.'''
+
     key = 'crunch'
     presenter_class_front = horror_cards.svg.Crunch
     plan = [_OvidParagraph]
@@ -83,4 +95,5 @@ class TimeField(cbg.content.field.Layout):
 
 
 class StackNameField(cbg.content.text.TextField):
+    '''A field for the name that goes on the reverse side of a card.'''
     presenter_class_back = horror_cards.svg.StackName
