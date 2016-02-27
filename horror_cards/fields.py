@@ -3,7 +3,7 @@
 import ovid
 import cbg
 
-import hc
+import horror_cards
 
 
 class _OvidParagraph(cbg.content.text.Paragraph):
@@ -15,21 +15,21 @@ class _OvidParagraph(cbg.content.text.Paragraph):
 
 class TitleField(cbg.content.text.TextField):
     key = cbg.content.card.Card.key_title
-    presenter_class_front = hc.svg.Title
+    presenter_class_front = horror_cards.svg.Title
 
 
 class TagField(cbg.content.tag.AdvancedTagField):
-    presenter_class_front = hc.svg.Tagbox
+    presenter_class_front = horror_cards.svg.Tagbox
 
 
 class FluffField(cbg.content.text.TextField):
     key = 'fluff'
-    presenter_class_front = hc.svg.Fluff
+    presenter_class_front = horror_cards.svg.Fluff
 
 
 class CrunchField(cbg.content.text.TextField):
     key = 'crunch'
-    presenter_class_front = hc.svg.Crunch
+    presenter_class_front = horror_cards.svg.Crunch
     plan = [_OvidParagraph]
 
     def in_spec(self):
@@ -37,12 +37,12 @@ class CrunchField(cbg.content.text.TextField):
 
         applied_tags = self.tags
 
-        if hc.tags.PSYCHOSIS in applied_tags:
+        if horror_cards.tags.PSYCHOSIS in applied_tags:
             self.specification.append("When you have as much Psychosis as "
                                       "Cool, you can't tell allies from "
                                       "enemies.")
 
-        if hc.tags.BREAKDOWN in applied_tags:
+        if horror_cards.tags.BREAKDOWN in applied_tags:
             self.specification.append("When you have as much Breakdown as "
                                       "Cool, you try to kill yourself or "
                                       "have a heart attack.")
@@ -58,13 +58,13 @@ class TimeField(cbg.content.field.Layout):
     '''A field for ticking off units of time until something happens.'''
 
     key = 'recovery'
-    presenter_class_front = hc.svg.RecoveryTime
+    presenter_class_front = horror_cards.svg.RecoveryTime
 
     class TimeAmount(cbg.content.field.ArbitraryContainer):
-        presenter_class_front = hc.svg.RecoveryTime.BoxRow
+        presenter_class_front = horror_cards.svg.RecoveryTime.BoxRow
 
     class TimeText(cbg.content.text.TextField):
-        presenter_class_front = hc.svg.RecoveryTime.RecoveryLead
+        presenter_class_front = horror_cards.svg.RecoveryTime.RecoveryLead
 
     def in_spec(self):
         amount = self.specification
@@ -83,4 +83,4 @@ class TimeField(cbg.content.field.Layout):
 
 
 class StackNameField(cbg.content.text.TextField):
-    presenter_class_back = hc.svg.StackName
+    presenter_class_back = horror_cards.svg.StackName

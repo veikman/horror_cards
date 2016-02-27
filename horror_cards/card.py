@@ -3,29 +3,29 @@
 
 import cbg
 
-import hc.fields
-import hc.svg
+import horror_cards.fields
+import horror_cards.svg
 
 
 class BasicCard(cbg.content.card.Card):
     class FromTop(cbg.content.field.Layout):
-        plan = (hc.fields.StackNameField,
-                hc.fields.TitleField,
-                hc.fields.TagField,
-                hc.fields.CrunchField,
-                hc.fields.TimeField
+        plan = (horror_cards.fields.StackNameField,
+                horror_cards.fields.TitleField,
+                horror_cards.fields.TagField,
+                horror_cards.fields.CrunchField,
+                horror_cards.fields.TimeField
                 )
-        presenter_class_front = hc.svg.CardFront.LayoutFromTop
-        presenter_class_back = hc.svg.CardBack.LayoutFromTop
+        presenter_class_front = horror_cards.svg.CardFront.LayoutFromTop
+        presenter_class_back = horror_cards.svg.CardBack.LayoutFromTop
 
     class FromBottom(cbg.content.field.Layout):
-        plan = (hc.fields.FluffField,
+        plan = (horror_cards.fields.FluffField,
                 )
-        presenter_class_front = hc.svg.CardFront.LayoutFromBottom
+        presenter_class_front = horror_cards.svg.CardFront.LayoutFromBottom
 
     plan = (FromTop, FromBottom)
-    presenter_class_front = hc.svg.CardFront
-    presenter_class_back = hc.svg.CardBack
+    presenter_class_front = horror_cards.svg.CardFront
+    presenter_class_back = horror_cards.svg.CardBack
 
     @property
     def sorting_keys(self):

@@ -4,13 +4,13 @@
 import yaml
 import collections
 
-import hc.card
-import hc.tags
+import horror_cards.card
+import horror_cards.tags
 
 
 FILENAME = 'locations'
-FATALITY = [hc.markup.fatality.produce()]  # Markup for replacement.
-BLACKOUT = [hc.markup.blackout.produce()]  # Markup for replacement.
+FATALITY = [horror_cards.markup.fatality.produce()]  # Markup for replacement.
+BLACKOUT = [horror_cards.markup.blackout.produce()]  # Markup for replacement.
 
 HEAD = 'Head'
 NECK = 'Neck'
@@ -52,15 +52,15 @@ class BodyMap(dict):
         self['Left {}'.format(location)] = value
 
 
-BALLISTIC = BodyMap(hc.tags.VIOLENCE_BALLISTIC,
+BALLISTIC = BodyMap(horror_cards.tags.VIOLENCE_BALLISTIC,
                     3, 1, 9,
                     (1, 2, 2, 1),
                     (3, 1, 2, 0))
-CUT = BodyMap(hc.tags.VIOLENCE_CUT,
+CUT = BodyMap(horror_cards.tags.VIOLENCE_CUT,
               3, 1, 8,
               (2, 3, 4, 2),
               (3, 1, 2, 0))
-BLUNT = BodyMap(hc.tags.VIOLENCE_BLUNT,
+BLUNT = BodyMap(horror_cards.tags.VIOLENCE_BLUNT,
                 3, 1, 7,
                 (2, 3, 3, 3),
                 (3, 3, 3, 1))
@@ -69,7 +69,7 @@ BLUNT = BodyMap(hc.tags.VIOLENCE_BLUNT,
 def describe(violence, location, number):
     error = 'Too many cards requested for {}, {}: {}.'
     error = error.format(violence, location, number)
-    torment = str(hc.tags.TORMENT)
+    torment = str(horror_cards.tags.TORMENT)
 
     tags = ['wound']
     fluff = None
@@ -81,8 +81,8 @@ def describe(violence, location, number):
     if location == TORSO:
         crunch = ['When you gain this: Draw 1 Torso Wound.']
 
-    if violence == hc.tags.VIOLENCE_BALLISTIC:
-        tags.append(hc.tags.VIOLENCE_BALLISTIC)
+    if violence == horror_cards.tags.VIOLENCE_BALLISTIC:
+        tags.append(horror_cards.tags.VIOLENCE_BALLISTIC)
         days = 3 * MONTH
         if number in (0, 4):
             title = 'Bullet in the {}'.format(location)
@@ -161,8 +161,8 @@ def describe(violence, location, number):
         else:
             raise ValueError(error)
 
-    elif violence == hc.tags.VIOLENCE_CUT:
-        tags.append(hc.tags.VIOLENCE_CUT)
+    elif violence == horror_cards.tags.VIOLENCE_CUT:
+        tags.append(horror_cards.tags.VIOLENCE_CUT)
         days = 2 * MONTH
         if location == TORSO:
             if number in (0, 1):
@@ -220,8 +220,8 @@ def describe(violence, location, number):
             else:
                 raise ValueError(error)
 
-    elif violence == hc.tags.VIOLENCE_BLUNT:
-        tags.append(hc.tags.VIOLENCE_BLUNT)
+    elif violence == horror_cards.tags.VIOLENCE_BLUNT:
+        tags.append(horror_cards.tags.VIOLENCE_BLUNT)
         days = 3 * WEEK
         if location == TORSO:
             if number == 0:

@@ -3,7 +3,7 @@
 import cbg
 import cbg.svg.wardrobe as cw
 
-import hc.tags
+import horror_cards.tags
 
 
 # Colors.
@@ -11,16 +11,16 @@ import hc.tags
 BLACK = (cbg.sample.color.BLACK,)
 WHITE = (cbg.sample.color.WHITE,)
 
-SEMANTIC = {hc.tags.SUCCESS: ('#33aa33',),
-            hc.tags.RISK: ('#297d8a',),
-            hc.tags.SFX_GOOD: ('#4549ff',),
-            hc.tags.SFX_BAD: ('#bb3333',),
-            hc.tags.WASTE: ('#666666',),
-            hc.tags.DESPERATION: ('#773377',),
-            hc.tags.SHOCK: ('#f7d482',),
-            hc.tags.INSANITY: ('#c9bda7',),
-            hc.tags.LIFE: ('#a2ac5f',),
-            hc.tags.WOUND: ('#770000',),
+SEMANTIC = {horror_cards.tags.SUCCESS: ('#33aa33',),
+            horror_cards.tags.RISK: ('#297d8a',),
+            horror_cards.tags.SFX_GOOD: ('#4549ff',),
+            horror_cards.tags.SFX_BAD: ('#bb3333',),
+            horror_cards.tags.WASTE: ('#666666',),
+            horror_cards.tags.DESPERATION: ('#773377',),
+            horror_cards.tags.SHOCK: ('#f7d482',),
+            horror_cards.tags.INSANITY: ('#c9bda7',),
+            horror_cards.tags.LIFE: ('#a2ac5f',),
+            horror_cards.tags.WOUND: ('#770000',),
             }
 
 
@@ -60,16 +60,16 @@ class CardBack(cbg.svg.card.CardBack):
         applied_tags = self.field.tags
         filename = None
 
-        tag_map = {hc.tags.CHECK.key: 'check.jpg',
-                   hc.tags.SHOCK.key: 'shock.jpg',
-                   hc.tags.INSANITY.key: 'insanity.jpg',
-                   hc.tags.LIFE.key: 'life.jpg',
-                   hc.tags.BALLISTIC.key: 'wound_ballistic.jpg',
-                   hc.tags.CUT.key: 'wound_cut.jpg',
-                   hc.tags.BLUNT.key: 'wound_blunt.jpg',
-                   hc.tags.DISC.key: 'wound_discretionary.jpg',
-                   hc.tags.TORSO.key: 'wound_torso.jpg',
-                   hc.tags.HEAD.key: 'wound_head.jpg',
+        tag_map = {horror_cards.tags.CHECK.key: 'check.jpg',
+                   horror_cards.tags.SHOCK.key: 'shock.jpg',
+                   horror_cards.tags.INSANITY.key: 'insanity.jpg',
+                   horror_cards.tags.LIFE.key: 'life.jpg',
+                   horror_cards.tags.BALLISTIC.key: 'wound_ballistic.jpg',
+                   horror_cards.tags.CUT.key: 'wound_cut.jpg',
+                   horror_cards.tags.BLUNT.key: 'wound_blunt.jpg',
+                   horror_cards.tags.DISC.key: 'wound_discretionary.jpg',
+                   horror_cards.tags.TORSO.key: 'wound_torso.jpg',
+                   horror_cards.tags.HEAD.key: 'wound_head.jpg',
                    }
 
         for tag in applied_tags:
@@ -125,7 +125,7 @@ class RecoveryTime(cbg.svg.presenter.SVGPresenter):
 
         class Wardrobe(cw.Wardrobe):
             modes = {cw.MAIN: cw.Mode(thickness=0.4, fill_colors=('none',),
-                                      stroke_colors=SEMANTIC[hc.tags.WOUND])}
+                                      stroke_colors=SEMANTIC[horror_cards.tags.WOUND])}
 
         def present(self):
             n_boxes = self.field.content
@@ -175,7 +175,7 @@ class Tagbox(cbg.svg.tag.TagBanner):
 
         # Change the wardrobe based on applied tags.
         applied_tags = self.field.tags
-        if hc.tags.SHOCK in applied_tags:
+        if horror_cards.tags.SHOCK in applied_tags:
             self.wardrobe.mode.fill_colors = BLACK
             self.wardrobe.mode.thickness = 0
         else:
@@ -201,14 +201,14 @@ class StackName(Tagbox, cbg.svg.presenter.IndentedPresenter):
     def present(self):
         applied_tags = self.field.tags
         text = None
-        if hc.tags.WOUND in applied_tags:
+        if horror_cards.tags.WOUND in applied_tags:
             for t in applied_tags:
-                if t.subordinate_to == hc.tags.WOUND:
+                if t.subordinate_to == horror_cards.tags.WOUND:
                     text = t.full_name
                     break
         else:
-            for t in (hc.tags.CHECK, hc.tags.SHOCK,
-                      hc.tags.INSANITY, hc.tags.LIFE):
+            for t in (horror_cards.tags.CHECK, horror_cards.tags.SHOCK,
+                      horror_cards.tags.INSANITY, horror_cards.tags.LIFE):
                 if t in applied_tags:
                     text = str(t).capitalize()
                     break
