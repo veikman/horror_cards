@@ -22,9 +22,9 @@ class TagField(cbg.content.tag.AdvancedTagField):
     presenter_class_front = hc.svg.Tagbox
 
 
-class LeadField(cbg.content.text.TextField):
-    key = 'lead'
-    presenter_class_front = hc.svg.Lead
+class FluffField(cbg.content.text.TextField):
+    key = 'fluff'
+    presenter_class_front = hc.svg.Fluff
 
 
 class CrunchField(cbg.content.text.TextField):
@@ -34,7 +34,8 @@ class CrunchField(cbg.content.text.TextField):
 
     def in_spec(self):
         self.specification = list(cbg.misc.make_listlike(self.specification))
-        applied_tags = self.card.tags
+
+        applied_tags = self.tags
 
         if hc.tags.PSYCHOSIS in applied_tags:
             self.specification.append("When you have as much Psychosis as "
@@ -43,13 +44,13 @@ class CrunchField(cbg.content.text.TextField):
 
         if hc.tags.BREAKDOWN in applied_tags:
             self.specification.append("When you have as much Breakdown as "
-                                      "Cool, you try to kill yourself, or "
+                                      "Cool, you try to kill yourself or "
                                       "have a heart attack.")
 
         super().in_spec()
 
     def not_in_spec(self):
-        self.specification = ()
+        self.specification = []
         self.in_spec()
 
 
@@ -59,11 +60,11 @@ class TimeField(cbg.content.field.Layout):
     key = 'recovery'
     presenter_class_front = hc.svg.RecoveryTime
 
-    class TimeText(cbg.content.text.TextField):
-        presenter_class_front = hc.svg.RecoveryTime.RecoveryLead
-
     class TimeAmount(cbg.content.field.ArbitraryContainer):
         presenter_class_front = hc.svg.RecoveryTime.BoxRow
+
+    class TimeText(cbg.content.text.TextField):
+        presenter_class_front = hc.svg.RecoveryTime.RecoveryLead
 
     def in_spec(self):
         amount = self.specification
@@ -77,8 +78,8 @@ class TimeField(cbg.content.field.Layout):
             unit = 'months'
         lead = 'Recovery in {}:'.format(unit)
 
-        self.append(self.TimeAmount(specification=amount, parent=self))
         self.append(self.TimeText(specification=lead, parent=self))
+        self.append(self.TimeAmount(specification=amount, parent=self))
 
 
 class StackNameField(cbg.content.text.TextField):

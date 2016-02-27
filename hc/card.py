@@ -12,14 +12,14 @@ class BasicCard(cbg.content.card.Card):
         plan = (hc.fields.StackNameField,
                 hc.fields.TitleField,
                 hc.fields.TagField,
-                hc.fields.LeadField,
+                hc.fields.CrunchField,
+                hc.fields.TimeField
                 )
         presenter_class_front = hc.svg.CardFront.LayoutFromTop
         presenter_class_back = hc.svg.CardBack.LayoutFromTop
 
     class FromBottom(cbg.content.field.Layout):
-        plan = (hc.fields.CrunchField,
-                hc.fields.TimeField,
+        plan = (hc.fields.FluffField,
                 )
         presenter_class_front = hc.svg.CardFront.LayoutFromBottom
 

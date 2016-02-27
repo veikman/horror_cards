@@ -35,7 +35,7 @@ class CardFront(cbg.svg.card.CardFront):
         cursor_class = cbg.cursor.FromBottom
 
         def present(self):
-            self.cursor.slide(0.5)
+            self.cursor.slide(1.2)
             super().present()
 
     size = cbg.sample.size.MINI_EURO
@@ -57,7 +57,7 @@ class CardBack(cbg.svg.card.CardBack):
 
         '''
 
-        applied_tags = self.field.card.tags
+        applied_tags = self.field.tags
         filename = None
 
         tag_map = {hc.tags.CHECK.key: 'check.jpg',
@@ -101,41 +101,40 @@ class Title(cbg.svg.presenter.TextPresenter):
                                   bold=True, middle=True)}
 
 
-class Lead(cbg.svg.presenter.TextPresenter):
-    class Wardrobe(cbg.sample.wardrobe.MiniEuroSmall):
-        modes = {cw.MAIN: cw.Mode(font=cbg.sample.font.BITSTREAM_VERA_SANS)}
-
-
-class Crunch(cbg.svg.presenter.TextPresenter):
+class Fluff(cbg.svg.presenter.TextPresenter):
     class Wardrobe(cbg.sample.wardrobe.MiniEuroSmall):
         modes = {cw.MAIN: cw.Mode(font=cbg.sample.font.BITSTREAM_VERA_SANS,
                                   italic=True)}
 
 
-class RecoveryTime(cbg.svg.presenter.IndentedPresenter):
-    Wardrobe = Lead.Wardrobe
+class Crunch(cbg.svg.presenter.TextPresenter):
+    class Wardrobe(cbg.sample.wardrobe.MiniEuroSmall):
+        modes = {cw.MAIN: cw.Mode(font=cbg.sample.font.BITSTREAM_VERA_SANS)}
+
+
+class RecoveryTime(cbg.svg.presenter.SVGPresenter):
+    Wardrobe = Crunch.Wardrobe
     cursor_class = None
 
-    class RecoveryLead(cbg.svg.presenter.SVGPresenter):
-        Wardrobe = Lead.Wardrobe
+    class RecoveryLead(cbg.svg.presenter.TextPresenter):
+        Wardrobe = Crunch.Wardrobe
 
-        def present(self):
-            self.cursor.slide(1)
-            self.insert_paragraph(str(self.field))
+    class BoxRow(cbg.svg.presenter.IndentedPresenter):
 
-    class BoxRow(cbg.svg.presenter.SVGPresenter):
+        indentation = cbg.misc.Compass(1, 1)
+
         class Wardrobe(cw.Wardrobe):
             modes = {cw.MAIN: cw.Mode(thickness=0.4, fill_colors=('none',),
                                       stroke_colors=SEMANTIC[hc.tags.WOUND])}
 
         def present(self):
-            self.cursor.slide(4.7)
             n_boxes = self.field.content
             for n in range(n_boxes):
                 position = self.origin + (0.4 + n * 4.8, self.cursor.offset)
                 self.append(cbg.svg.shapes.Rect.new(position, (3.7, 3.7),
                                                     rounding=0.2,
                                                     wardrobe=self.wardrobe))
+            self.cursor.slide(4.7)
 
 
 class Tagbox(cbg.svg.tag.TagBanner):
@@ -155,7 +154,7 @@ class Tagbox(cbg.svg.tag.TagBanner):
         self.wardrobe.set_mode(cw.BACKGROUND)
 
         # Change the wardrobe based on applied tags.
-        applied_tags = self.field.card.tags
+        applied_tags = self.field.tags
         for tag in applied_tags:
             try:
                 self.wardrobe.mode.stroke_colors = SEMANTIC[tag]
@@ -175,7 +174,7 @@ class Tagbox(cbg.svg.tag.TagBanner):
         self.wardrobe.set_mode(cw.MAIN)
 
         # Change the wardrobe based on applied tags.
-        applied_tags = self.field.card.tags
+        applied_tags = self.field.tags
         if hc.tags.SHOCK in applied_tags:
             self.wardrobe.mode.fill_colors = BLACK
             self.wardrobe.mode.thickness = 0
@@ -200,7 +199,7 @@ class StackName(Tagbox, cbg.svg.presenter.IndentedPresenter):
         font_size = 4.5
 
     def present(self):
-        applied_tags = self.field.card.tags
+        applied_tags = self.field.tags
         text = None
         if hc.tags.WOUND in applied_tags:
             for t in applied_tags:

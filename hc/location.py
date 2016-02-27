@@ -9,8 +9,8 @@ import hc.tags
 
 
 FILENAME = 'locations'
-FATALITY = ' ' + hc.markup.fatality.produce()  # Markup for replacement.
-BLACKOUT = ' ' + hc.markup.blackout.produce()  # Markup for replacement.
+FATALITY = [hc.markup.fatality.produce()]  # Markup for replacement.
+BLACKOUT = [hc.markup.blackout.produce()]  # Markup for replacement.
 
 HEAD = 'Head'
 NECK = 'Neck'
@@ -72,86 +72,86 @@ def describe(violence, location, number):
     torment = str(hc.tags.TORMENT)
 
     tags = ['wound']
-    description = 'Seek medical attention.'
+    fluff = None
     crunch = None
     days = 4
 
     if location == HEAD:
-        crunch = 'Draw 1 Head Wound.'
+        crunch = ['When you gain this: Draw 1 Head Wound.']
     if location == TORSO:
-        crunch = 'Draw 1 Torso Wound.'
+        crunch = ['When you gain this: Draw 1 Torso Wound.']
 
     if violence == hc.tags.VIOLENCE_BALLISTIC:
         tags.append(hc.tags.VIOLENCE_BALLISTIC)
         days = 3 * MONTH
         if number in (0, 4):
             title = 'Bullet in the {}'.format(location)
-            description = "It's still in there."
+            fluff = "It's still in there."
             days = 4 * MONTH
             if location == HEAD:
-                description = "It's in the brain."
-                crunch = '-1 Physique. ' + crunch + FATALITY
+                fluff = "It's in the brain."
+                crunch = ['-1 Physique.'] + crunch + FATALITY
             elif KNEE in location:
                 title = 'Shattered {}'.format(location)
-                description = "The bullet fragmented the kneecap."
+                fluff = "The bullet fragmented the kneecap."
             elif UPPER_ARM in location or LOWER_LEG in location:
-                description = "You need to dig it out."
+                fluff = "You need to dig it out."
             elif LOWER_ARM in location:
-                description = "No grip. Nerve damage."
+                fluff = "No grip. Nerve damage."
             elif HAND in location:
                 title = 'Finger Blown Off {}'.format(location)
-                description = "It's gone."
+                fluff = "It's gone."
                 days = 2 * MONTH
         elif number == 1:
             title = 'Grazed {}'.format(location)
-            description = "It barely hit you."
+            fluff = "It barely hit you."
             crunch = None
             days = 6 * WEEK
             if location == HEAD:
                 title = 'Bullet Through the Jaw'
-                description = ("You are drinking your own blood.")
+                fluff = ("You are drinking your own blood.")
                 days = 3 * MONTH
             elif location == TORSO:
-                description = "It left a long but shallow gash."
+                fluff = "It left a long but shallow gash."
                 days = 5 * WEEK
             elif SHOULDER in location or LOWER_ARM in location:
-                description = "It just winged you."
+                fluff = "It just winged you."
                 days = 4 * WEEK
             elif KNEE in location:
-                description = "It must have bounced off the bone."
+                fluff = "It must have bounced off the bone."
                 days = 10 * WEEK
             elif UPPER_LEG in location:
                 new_location = location.replace(UPPER_LEG, 'Thigh')
                 title = 'Torn Inner {}'.format(new_location)
-                description = "Your pants are slick with blood."
+                fluff = "Your pants are slick with blood."
         elif number in (2, 8):
             title = 'Shot Through the {}'.format(location)
             if location == HEAD:
-                description = "You don't always see it coming."
-                crunch = 'You are dead.'
+                fluff = "You don't always see it coming."
+                crunch = ['You are dead.']
                 days = None
             elif location == TORSO:
                 tags.append(torment)
                 title = 'Gutshot'
-                description = "You're going to die, and it won't be fast."
-                crunch = 'Draw one card per hour from the Torso Wound deck.'
+                fluff = "You're going to die, and it won't be fast."
+                crunch = ['Draw one Torso Wound per hour.']
                 days = None
             elif SHOULDER in location:
-                description = "The clavicle shattered."
+                fluff = "The clavicle shattered."
             elif UPPER_ARM in location:
-                description = "The humerus shattered."
+                fluff = "The humerus shattered."
                 days = 6 * MONTH
             elif HAND in location or FOOT in location:
-                description = "The exit wound is the size of a dime."
+                fluff = "The exit wound is the size of a dime."
             elif UPPER_LEG in location:
-                description = "The exit wound is the size of a golf ball."
+                fluff = "The exit wound is the size of a golf ball."
                 days = 5 * MONTH
             else:
-                description = "The exit wound is as big as a quarter."
+                fluff = "The exit wound is as big as a quarter."
                 days = 4 * MONTH
         elif number in (3, 6):
             title = 'Fragmented Bullet in the {}'.format(location)
-            description = "It hit the bone and broke up."
+            fluff = "It hit the bone and broke up."
         elif number in (5, 7):
             title = 'Clean Shot Through the {}'.format(location)
             days = 2 * MONTH
@@ -172,12 +172,12 @@ def describe(violence, location, number):
             elif number == 2:
                 tags.append(torment)
                 title = 'Stomach Cut Open'
-                description = "Yards of slippery rope."
-                crunch = 'Draw one card per minute from the Torso Wound deck.'
+                fluff = "Yards of slippery rope."
+                crunch = ['Draw one Torso Wound per minute.']
                 days = None
             elif number == 3:
                 title = 'Stabbed in the Back'
-                description = "Feels deep."
+                fluff = "Feels deep."
             elif number == 4:
                 title = 'Stabbed Between the Ribs'
                 crunch = crunch + FATALITY
@@ -187,7 +187,7 @@ def describe(violence, location, number):
                 crunch = None
             elif number == 6:
                 title = 'Lacerated Armpit'
-                description = 'There will be scars.'
+                fluff = 'There will be scars.'
                 days = 10
             elif number == 7:
                 title = 'Slashed Left Abdomen'
@@ -202,7 +202,7 @@ def describe(violence, location, number):
             if number == 0:
                 title = 'Lacerated {}'.format(location)
                 if KNEE in location or LOWER_ARM in location:
-                    description = "You'll want to disinfect that."
+                    fluff = "You'll want to disinfect that."
             elif number in (1, 4):
                 title = 'Slashed {}'.format(location)
                 days = 3 * MONTH
@@ -212,10 +212,10 @@ def describe(violence, location, number):
                     title = 'Raked {}'.format(location)
                     days = 3 * WEEK
                 elif FOOT in location:
-                    description = "There's blood in your tracks."
+                    fluff = "There's blood in your tracks."
             elif number == 3:
                 title = 'Ragged {}'.format(location)
-                description = "Like a wild animal attack."
+                fluff = "Like a wild animal attack."
                 days = 4 * MONTH
             else:
                 raise ValueError(error)
@@ -233,7 +233,7 @@ def describe(violence, location, number):
                 title = 'Battered Stomach'
             elif number == 2:
                 title = 'Wrenched Back'
-                description = "It hurts more when you're upright."
+                fluff = "It hurts more when you're upright."
                 crunch = None
                 days = 5 * WEEK
             elif number == 3:
@@ -241,7 +241,7 @@ def describe(violence, location, number):
                 crunch = None
             elif number == 4:
                 title = 'Pulled a Muscle in Your Back'
-                description = 'The swelling will go down.'
+                fluff = 'The swelling will go down.'
                 crunch = None
                 days = 1 * WEEK
             elif number == 5:
@@ -259,46 +259,46 @@ def describe(violence, location, number):
                 days = 6 * WEEK
                 if location == HEAD:
                     title = 'Lump on the {}'.format(location)
-                    description = "Swollen and sore."
+                    fluff = "Swollen and sore."
                     days = 1 * WEEK
                 elif location == NECK:
                     title = 'Smashed Larynx'
-                    description = "You can't breathe."
+                    fluff = "You can't breathe."
                     days = 3 * WEEK
                 elif SHOULDER in location:
                     title = 'Dislocated {}'.format(location)
-                    description = "Feels weird."
+                    fluff = "Feels weird."
                     days = 2 * WEEK
                 elif HAND in location:
-                    description = "You can barely move your fingers."
+                    fluff = "You can barely move your fingers."
                     days = 5 * WEEK
                 elif KNEE in location:
                     title = 'Busted {}'.format(location)
-                    description = "Keep your weight off it."
+                    fluff = "Keep your weight off it."
                     days = 8 * WEEK
             elif number == 1:
                 title = 'Bruised {}'.format(location)
-                description = 'Ugly, but no deeper than the muscle.'
+                fluff = 'Ugly, but no deeper than the muscle.'
                 days = 1 * WEEK
                 if location == HEAD:
                     title = 'Battered Face'
-                    description = 'A black eye.'
+                    fluff = 'A black eye.'
                 elif HAND in location:
-                    description = 'The joints are sore.'
+                    fluff = 'The joints are sore.'
                 elif KNEE in location:
                     title = 'Scraped {}'.format(location)
-                    description = 'It hurts when it bends.'
+                    fluff = 'It hurts when it bends.'
                     days = 2 * WEEK
                 elif FOOT in location:
                     title = 'Stubbed Toes on {}'.format(location)
-                    description = "You're going to lose that nail."
+                    fluff = "You're going to lose that nail."
             elif number == 2:
                 title = 'Crushed {}'.format(location)
                 days = 3 * MONTH
                 if location == HEAD:
                     title = 'Compound Skull Fracture'
-                    description = "Cracked like an egg."
-                    crunch = "You are dead."
+                    fluff = 'Cracked like an egg.'
+                    crunch = ['You are dead.']
                     days = None
                 elif UPPER_ARM in location:
                     new_location = location.replace(UPPER_ARM, 'Elbow')
@@ -307,28 +307,28 @@ def describe(violence, location, number):
                 elif LOWER_ARM in location:
                     new_location = location.replace(LOWER_ARM, 'Wrist')
                     title = 'Twisted {}'.format(new_location)
-                    description = "Badly sprained."
+                    fluff = "Badly sprained."
                     days = 6
                 elif UPPER_LEG in location:
                     new_location = location.replace(UPPER_LEG, 'Thigh')
                     title = 'Pulled {} Muscle'.format(new_location)
-                    description = 'A little bruised.'
+                    fluff = 'A little bruised.'
                     days = 4
                 elif KNEE in location:
                     title = 'Twisted {}'.format(location)
                     days = 2 * WEEK
                 elif LOWER_LEG in location:
                     title = 'Sprained {}'.format(location)
-                    description = "The tendon might be OK."
+                    fluff = "The tendon might be OK."
                     days = 2 * WEEK
                 elif FOOT in location:
-                    description = "You can't move your toes."
+                    fluff = "You can't move your toes."
             elif number == 3:
                 title = 'Broken {}'.format(location)
                 days = 10 * WEEK
             elif number == 4:
                 title = 'Welts on the {}'.format(location)
-                description = 'Just needs time to heal.'
+                fluff = 'Just needs time to heal.'
                 days = 2 * WEEK
             else:
                 raise ValueError(error)
@@ -349,9 +349,12 @@ def describe(violence, location, number):
         if crunch:
             crunch = crunch + BLACKOUT
         else:
-            crunch = BLACKOUT.strip()
+            crunch = BLACKOUT
 
-    return tuple(tags), title, description, crunch, days
+    if isinstance(crunch, list):
+        crunch = tuple(crunch)  # Hashable.
+
+    return tuple(tags), title, fluff, crunch, days
 
 
 def generate(folder):
@@ -375,10 +378,10 @@ def generate(folder):
             f.write(yaml.dump(writeup(copies, *data)))
 
 
-def writeup(copies, tags, title, description, crunch, recovery):
+def writeup(copies, tags, title, fluff, crunch, recovery):
     python = {title:
               {'metadata': {'copies': copies},
-               'data': {'tags': tags, 'lead': description}}
+               'data': {'tags': tags, 'fluff': fluff}}
               }
     if recovery:
         python[title]['data']['recovery'] = recovery

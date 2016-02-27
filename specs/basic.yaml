@@ -15,7 +15,6 @@ The Triumph of His Pledge:
     copies: 2
   data:
     tags: [check, success]
-    lead: You pull through on this one.
     crunch:
       - You achieve the main goal of your action.
 
@@ -24,185 +23,191 @@ Loan Oft Loses:
     copies: 3
   data:
     tags: [check, risk]
-    lead:
-      - You can take a serious risk to scrape by.
-      - When you think you've made your own luck, it's usually stolen.
     crunch:
       - "If you take 1 Stress or remove this card from play until the next session: You achieve the main goal of your action."
+    fluff:
+      - They'll believe one bluff. You can reach behind the counter when she looks away. By luck or bravado, you can scrape by this time.
 
 Slings and Arrows:
   metadata:
     copies: 3
   data:
     tags: [check, sfx bad]
-    lead: Your boots lose their grip. The clip's somehow empty. They caught you on video.
     crunch:
-      - "In combat: Take 1 Wound."
-      - Something bad, but not failure.
+      - "In combat: Draw 1 Wound matching enemy armament."
+      - Something bad but unrelated to the main goal of your action.
+    fluff:
+      - It takes longer than you expected. Your boots lose their grip. The flashlight goes out. One spark lands in the pooled gasoline.
 
 Yon High Eastward Hill:
   data:
     tags: [check, sfx good]
-    lead:
-      - A secret stash cracked open. The killer's DNA beneath your ragged fingernails. The break of dawn.
     crunch:
       - "If you drew this along with Slings and Arrows: Discard 1 of each."
-      - Something good, but not what you wanted.
+      - Something good but unrelated to the main goal of your action.
+    fluff:
+      - A secret stash cracked open. The killer's DNA beneath your ragged fingernails. The break of dawn.
 
 Martial Stalk:
   data:
     tags: [check, desperation]
-    lead:
-      - A chance to prove your dedication.
     crunch:
       - "As many times as you like: Take 1 Stress or 1 Wound and draw another card."
+    fluff:
+      - Push hard to prove your dedication.
 
 The Pale Cast of Thought:
   metadata:
     copies: 2
   data:
     tags: [check, waste]
-    lead: You've let precious moments go to waste.
+    crunch:
+      - No effect.
 
 ##############
 # SHOCK DECK #
 ##############
 
+Agitated:
+  data:
+    tags: [shock]
+    fluff: You hide the effect it had on you behind a long series of swaggering threats and oaths.
+
 Angry:
   data:
     tags: [shock, psychosis]
-    lead: Somebody fucked up again.
+    fluff: Somebody fucked up again.
 
 Blocked:
   data:
     tags: [shock]
-    lead: Your words do not get past your lips.
+    fluff: Your words do not get past your lips.
 
 Flustered:
   data:
     tags: [shock]
-    lead: Sweat is beading on your brow. Must be warm in here, but your hands are shaking.
+    fluff: Sweat is beading on your brow. Must be warm in here, but your hands are shaking.
 
 Breathless:
   data:
     tags: [shock, breakdown]
-    lead: Your heartbeat bothers you. You can’t catch your breath.
+    fluff: Your heartbeat bothers you. You can't catch your breath.
 
 Clingy:
   data:
     tags: [shock]
-    lead: You can’t be alone right now. You need to stick close and keep talking.
+    fluff: You can't be alone right now. You need to stick close and keep talking.
 
 Confused:
   data:
     tags: [shock]
-    lead: Think about it. If it doesn’t make sense, it’s probably wrong.
+    fluff: Think about it. If it doesn't make sense, it's probably wrong.
 
 Dizzy:
   data:
     tags: [shock]
-    lead: You can't focus your thoughts, or your eyes.
+    fluff: You can't focus your thoughts, or your eyes.
 
 Cowardly:
   data:
     tags: [shock]
-    lead: The choice is between sneaking and running away.
+    fluff: The choice is between sneaking and running away.
 
 Dissociated:
   data:
     tags: [shock, breakdown]
-    lead: This wasn’t supposed to happen. It can’t be your fault. Why are you even here?
+    fluff: This wasn't supposed to happen. It can't be your fault. Why are you even here?
 
 Exhausted:
   data:
     tags: [shock]
-    lead: Your feet are heavy. You’d like to lie down.
+    fluff: Your feet are heavy. You'd like to lie down.
 
 Faint:
   data:
     tags: [shock]
-    lead: The world is dim.
     crunch: You lose consciousness.
+    fluff: The world is dim.
 
 Fierce:
   data:
     tags: [shock, psychosis]
-    lead: Of course you're not delusional. You have the right idea, and the others need to listen.
+    fluff: Of course you're not delusional. You have the right idea, and the others need to listen.
 
 Frenzied:
   data:
     tags: [shock, psychosis]
-    lead: Did you see the fucking tentacles on that guy‽
+    fluff: Did you see the fucking tentacles on that guy‽
 
 Nauseous:
   data:
     tags: [shock]
-    lead: You lose your lunch.
+    fluff: You lose your lunch.
 
 Hallucinating:
   data:
     tags: [shock, psychosis]
-    lead: You see it everywhere until you look twice.
+    fluff: You see it everywhere until you look twice.
 
 Hateful:
   data:
     tags: [shock, psychosis]
-    lead: They’re pure evil.
+    fluff: They're pure evil.
 
 Poised:
   data:
     tags: [shock]
-    lead: If you don’t shoot first, you may not have a chance to identify your target.
+    fluff: If you don't shoot first, you may not have a chance to identify your target.
 
 Reckless:
   data:
     tags: [shock]
-    lead: This has to be settled right now.
+    fluff: This has to be settled right now.
 
 Reeling:
   data:
     tags: [shock, breakdown]
-    lead: You don't want to remember this. Don't think about it. Wipe it out.
+    fluff: You don't want to remember this. Don't think about it. Wipe it out.
 
 Suggestible:
   data:
     tags: [shock]
-    lead: You may be a little dazed, but you’re ready to take orders.
+    fluff: You may be a little dazed, but you're ready to take orders.
 
 Terrified:
   data:
     tags: [shock, breakdown]
-    lead: Nightmares crouch around that corner.
+    fluff: Nightmares crouch around that corner.
 
 Thrilled:
   data:
     tags: [shock, psychosis]
-    lead: You feel strangely alive.
+    fluff: You feel strangely alive.
 
 Tired of Secrets:
   data:
     tags: [shock]
-    lead: It’s time to tell the world.
+    fluff: It's time to tell the world.
 
 Vertiginous:
   data:
     tags: [shock]
-    lead: Your head is light. Your stomach is throwing somersaults. It's as if you were about to fall off a cliff.
+    fluff: Your head is light. Your stomach is throwing somersaults. It's as if you were about to fall off a cliff.
 
 Violent:
   data:
     tags: [shock, psychosis]
-    lead: Destroy it.
+    fluff: Destroy it.
 
 Loud:
   data:
     tags: [shock, psychosis]
-    lead: You scream, rant and plead, until you can only whimper.
+    fluff: You scream, rant and plead, until you can only whimper. There isn't one coherent sentence in it.
 
 Rattled:
   data:
     tags: [shock]
-    lead: You know it looks like a tic, but it's working, so you wouldn't want to stop.
+    fluff: You know it looks like a tic, but it's working.
 
 #################
 # INSANITY DECK #
@@ -211,173 +216,186 @@ Rattled:
 Addiction:
   data:
     tags: [insanity]
-    lead: Gambling, sex, drugs. The more distracting, the better.
     crunch: Take 1 Stress each day you fail to indulge.
+    fluff: Gambling, sex, drugs. The more distracting, the better.
 
 Atavism:
   data:
     tags: [insanity]
-    lead: You dream of impossible brutality.
+    fluff: You dream of impossible brutality.
 
 Asceticism:
   data:
     tags: [insanity]
-    lead: You do not deserve, or do not have time for, the basics of personal grooming, hygiene and polite conversation.
     crunch: -1 Charm.
+    fluff: You do not deserve, or do not have time for, the basics of personal grooming, hygiene and polite conversation.
 
 Broken Dreams:
   data:
     tags: [insanity]
-    lead: You cry a lot.
     crunch: -1 Charm.
+    fluff: You cry a lot.
 
 Bigotry:
   data:
     tags: [insanity]
-    lead: At least you’re the right kind of people.
     crunch: -1 Charm.
-
-Bipolar:
-  data:
-    tags: [insanity]
-    lead: Work around the clock. Crash hard.
-    crunch: -1 Cool.
-
-Cruelty:
-  data:
-    tags: [insanity]
-    lead: You just need to get a hold of those creeps. Preferably somewhere quiet.
-    crunch: +1 Cool.
-
-Curiosity:
-  data:
-    tags: [insanity]
-    lead: The truth about the world cannot be your enemy. It must provide opportunities. Perhaps you can join the winning team.
-    crunch: +1 Perception.
-
-Callousness:
-  data:
-    tags: [insanity]
-    lead:
-      - There’s nothing you won’t do.
-      - On the other hand, there’s nothing you won’t do.
-
-Denial:
-  data:
-    tags: [insanity]
-    lead: You don’t have a problem.
-    crunch: -1 Cool.
-
-Fugue:
-  data:
-    tags: [insanity]
-    lead: Sometimes you go missing for hours, days or weeks. You drift for a while, having no responsibilities. Forming no memories.
-
-Depression:
-  data:
-    tags: [insanity]
-    lead: Not much matters. Maybe not even the fight.
-    crunch: -1 Perception.
-
-Insomnia:
-  data:
-    tags: [insanity]
-    lead: No sleep for the wicked.
-    crunch: -1 Cool.
-
-Death Wish:
-  data:
-    tags: [insanity]
-    lead: You’re on the 9mm retirement plan. When the moment comes, you won't care who retires with you. It is a mercy, after all.
-
-Plastic People:
-  data:
-    tags: [insanity]
-    lead: You hate the faceless masses because you have to defend them.
-    crunch: -1 Charm.
-
-OCD:
-  data:
-    tags: [insanity]
-    lead: Impose order on your life.
-    crunch: -1 Charm.
-
-Collection:
-  data:
-    tags: [insanity]
-    lead: The right gear will do the job. You can’t bear to lose material possessions.
-    crunch: -1 Perception.
-
-Eating Disorder:
-  data:
-    tags: [insanity]
-    lead: You're extremely picky about your food. Your therapist says it represents your ties to the world.
+    fluff: At least you're the right kind of people.
 
 Biophobia:
   data:
     tags: [insanity]
-    lead: You hate nature. The starry sky is threatening, or the woods are full of cruelty and filth. You feel more comfortable indoors.
+    fluff: You hate nature. The starry sky is threatening, or the woods are full of cruelty and filth. You feel more comfortable indoors.
 
-Phobia:
+Bipolar:
   data:
     tags: [insanity]
-    lead: You have a paralyzing fear of something that hurt you.
-
-Paraphilia:
-  data:
-    tags: [insanity]
-    lead: Vanilla doesn't do anything for you.
-
-Paranoia:
-  data:
-    tags: [insanity]
-    lead: They spy on you. They steal from you. They blame you for everything that goes wrong.
     crunch: -1 Cool.
+    fluff: Work around the clock. Crash hard.
 
-Rebellion:
+Callousness:
   data:
     tags: [insanity]
-    lead: Your bosses talk shit. Your subordinates are mutineering slime.
+    fluff:
+      - There's nothing you won't do, but on the other hand, there's nothing you won't do.
 
-Extremism:
+Collection:
   data:
     tags: [insanity]
-    lead: The solution requires the transformation of society.
+    crunch: -1 Perception.
+    fluff: The right gear will do the job. You can't bear to lose material possessions.
 
-Religion:
+Cruelty:
   data:
     tags: [insanity]
-    lead: "You have been fortunate to experience the numinous: A sign of the profound meaning beneath everyday life. It may not be subject to reason, but it is always there."
+    crunch: +1 Cool.
+    fluff: You just need to get a hold of those creeps. Preferably somewhere quiet.
 
-The Rabbit Hole:
+Curiosity:
   data:
     tags: [insanity]
-    lead: The implications unspool.
-    crunch: Take 2 Stress. Discard this.
+    crunch: +1 Perception.
+    fluff: The truth about the world cannot be your enemy. It must provide opportunities. Perhaps you can join the winning team.
 
-Self-harm:
+Death Wish:
   data:
     tags: [insanity]
-    lead: The pain means you’re alive. It says you won’t be called to fight.
-    crunch: "When you are not wounded: Take 1 Wound."
+    fluff: You're on the 9mm retirement plan for maximum control. When the moment comes, you won't care who retires with you. It is a mercy, after all.
+
+Denial:
+  data:
+    tags: [insanity]
+    crunch: -1 Cool.
+    fluff: You don't have a problem.
+
+Depression:
+  data:
+    tags: [insanity]
+    crunch: -1 Perception.
+    fluff: Not much matters. Maybe not even the fight.
+
+Eating Disorder:
+  data:
+    tags: [insanity]
+    fluff: You're extremely picky about your food. Your therapist says it represents your ties to the world.
 
 Eversion:
   data:
     tags: [insanity]
-    lead: You're never healthy anymore. One month it's your skin or a nasty cough, another your stomach, your teeth, your heart.
     crunch: -1 Charm.
+    fluff: You're never healthy anymore. One month it's your skin or a nasty cough, another your stomach, your teeth, your heart.
+
+Exposure:
+  data:
+    tags: [insanity]
+    crunch: You cannot have Life.
+    fluff: You're an insider now, like the Sonderkommandos. Your old life and world have burned and can never be recovered.
+
+Extremism:
+  data:
+    tags: [insanity]
+    fluff: The solution requires the transformation of society.
+
+Fugue:
+  data:
+    tags: [insanity]
+    fluff: Sometimes you go missing for hours, days or weeks. You drift for a while, having no responsibilities. Forming no memories.
 
 Hero Complex:
   data:
     tags: [insanity]
-    lead: You’re not perfect, but you're right for this. You’re going to make it.
     crunch: -1 Cool.
+    fluff: You're not perfect, but you're right for this. You're going to make it.
+
+Insomnia:
+  data:
+    tags: [insanity]
+    crunch: -1 Perception.
+    fluff: No sleep for the wicked.
+
+OCD:
+  data:
+    tags: [insanity]
+    crunch: -1 Charm.
+    fluff: Impose order on your life.
+
+Plastic People:
+  data:
+    tags: [insanity]
+    crunch: -1 Charm.
+    fluff: You hate the faceless masses because you have to defend them.
+
+Phobia:
+  data:
+    tags: [insanity]
+    fluff: You have a paralyzing fear of something that hurt you.
+
+Paraphilia:
+  data:
+    tags: [insanity]
+    fluff: Vanilla doesn't do anything for you.
+
+Paranoia:
+  data:
+    tags: [insanity]
+    crunch: -1 Cool.
+    fluff: They spy on you. They steal from you. They blame you for everything that goes wrong.
+
+PTSD:
+  data:
+    tags: [insanity]
+    crunch: -1 Cool.
+    fluff: For you it's mainly a constant sense of danger.
+
+The Rabbit Hole:
+  data:
+    tags: [insanity]
+    crunch:
+      - +1 Perception.
+      - "When you take this: Draw a random Insanity."
+    fluff: There is no protection when the implications unspool.
+
+Rebellion:
+  data:
+    tags: [insanity]
+    fluff: Your bosses talk shit. Your subordinates are mutineering slime.
+
+Religion:
+  data:
+    tags: [insanity]
+    fluff: "You have been fortunate to experience the numinous: A sign of the profound meaning beneath everyday life. It may not be subject to reason, but it is always there."
+
+Self-harm:
+  data:
+    tags: [insanity]
+    crunch: "When you are not wounded: Draw 1 Wound."
+    fluff: Pain means you're alive. It says you won't be called to fight.
 
 Tainted Wisdom:
   data:
     tags: [insanity]
-    lead: Your secrets often make you nauseous. You're afraid to infect civilians just by getting close.
     crunch: -1 Charm.
+    fluff: Your secrets often make you nauseous. You're afraid to infect civilians just by getting close.
 
 #############
 # LIFE DECK #
@@ -388,77 +406,77 @@ Money:
     copies: 4
   data:
     tags: [life]
-    lead: You're not in debt. You don't have to worry about food or a place to sleep.
+    fluff: You're not in debt. You don't have to worry about food or a place to sleep.
 
 Love:
   metadata:
     copies: 3
   data:
     tags: [life]
-    lead: You're in a steady relationship. Your partner cares about you.
+    fluff: You're in a steady relationship. Your partner cares about you.
 
 Parenthood:
   metadata:
     copies: 4
   data:
     tags: [life]
-    lead: You get along with your kid.
+    fluff: You get along with your kid.
 
 Career:
   metadata:
     copies: 2
   data:
     tags: [life]
-    lead: You're up for promotion. If you toe the line, you can really go places.
+    fluff: You're up for promotion. If you toe the line, you can really go places.
 
 Recognition:
   metadata:
     copies: 2
   data:
     tags: [life]
-    lead: Your peers admire your energy and skill.
+    fluff: Your peers admire your energy and skill.
 
 Friendship:
   metadata:
     copies: 2
   data:
     tags: [life]
-    lead: You can tell your best buddy almost anything.
+    fluff: You can tell your best buddy almost anything.
 
 Hobby:
   metadata:
     copies: 3
   data:
     tags: [life]
-    lead: You have a physical or creative outlet in your spare time.
+    fluff: You have a physical or creative outlet in your spare time.
 
 Mentor:
   metadata:
     copies: 2
   data:
     tags: [life]
-    lead: You still talk to the old timer who taught you everything you know.
+    fluff: You still talk to the old timer who taught you everything you know.
 
 Heritage:
   metadata:
     copies: 3
   data:
     tags: [life]
-    lead: You know where you came from. You can go back.
+    fluff: You know where you came from. You can go back.
 
 Therapist:
   metadata:
     copies: 4
   data:
     tags: [life]
-    lead: You have long-term professional help.
+    fluff: You have long-term professional help.
 
 Home:
   metadata:
     copies: 3
   data:
     tags: [life]
-    lead: The place where you sleep feels calm and safe.
+    fluff: The place where you sleep feels calm and safe.
 
 ##############
 # WOUND DECK #
@@ -471,7 +489,7 @@ Lost a Lot of Blood:
     copies: 5
   data:
     tags: [wound, discretionary, strain]
-    lead:
+    fluff:
       - Your skin is pale and cool to the touch.
       - Without a transfusion, you will go into shock.
     recovery: 30
@@ -482,7 +500,7 @@ Infection:
     copies: 3
   data:
     tags: [wound, discretionary, strain]
-    lead:
+    fluff:
       - Your veins are on fire.
     recovery: 14
     crunch: "{{fatality}}"
@@ -493,58 +511,58 @@ Infection:
 Sickening Pain:
   data:
     tags: [wound, head]
-    lead: Too bad you're conscious.
+    fluff: Too bad you're conscious.
     crunch: Take 1 Stress.
     recovery: 3
 
 Concussion:
   data:
     tags: [wound, head]
-    lead: A mild brain injury and a massive headache.
+    fluff: A mild brain injury and a massive headache.
     crunch: "When you take another Wound: Take 1 Stress or lose consciousness."
     recovery: 14
 
 Spitting Teeth:
   data:
     tags: [wound, head]
-    lead: You used to be so pretty.
+    fluff: You used to be so pretty.
     recovery: 6
 
 Swimming Vision:
   data:
     tags: [wound, head]
-    lead: For someone who just took a blow to the head, you're incredibly lucky.
+    fluff: For someone who just took a blow to the head, you're incredibly lucky.
     crunch: -1 Perception.
     recovery: 1
 
 Lost an Eye:
   data:
     tags: [wound, head]
-    lead: Those aren't tears on your cheek.
+    fluff: Those aren't tears on your cheek.
     recovery: 60
 
 Broken Nose:
   data:
     tags: [wound, head]
-    lead: In the right line of work it's sort of cool.
+    fluff: In the right line of work it's sort of cool.
     recovery: 14
 
 Torn Ear:
   data:
     tags: [wound, head]
-    lead: Lost some cartilage.
+    fluff: Lost some cartilage.
     recovery: 6
 
 Facial Bruising:
   data:
     tags: [wound, head]
-    lead: Cheek all swollen up.
+    fluff: Cheek all swollen up.
     recovery: 4
 
 Compression Fracture:
   data:
     tags: [wound, head, torment]
-    lead: A broken neck means chronic back pain.
+    fluff: A broken neck means chronic back pain.
     crunch: "{{fatality}} {{blackout}}"
 
 ## Torso:
@@ -552,25 +570,25 @@ Compression Fracture:
 Coughing Up Blood:
   data:
     tags: [wound, torso, strain]
-    lead: There's something wrong with your lungs.
+    fluff: There's something wrong with your lungs.
     recovery: 30
 
 Splintered Ribs:
   data:
     tags: [wound, torso]
-    lead: Breathing doesn't normally feel this way.
+    fluff: Breathing doesn't normally feel this way.
     recovery: 120
 
 Beat Up Inside:
   data:
     tags: [wound, torso, strain]
-    lead: You'll be pissing blood for a week.
+    fluff: You'll be pissing blood for a week.
     recovery: 60
 
 Heart Attack:
   data:
     tags: [wound, torso, strain]
-    lead:
+    fluff:
       - It starts with a sudden pain behind the breast bone.
       - You ought to lie down.
     crunch: "{{fatality}}"
@@ -579,24 +597,24 @@ Heart Attack:
 Sucking Chest Wound:
   data:
     tags: [wound, torso, strain]
-    lead: If you live, you'll be in injury rehab for a year.
+    fluff: If you live, you'll be in injury rehab for a year.
     crunch: "{{fatality}}"
     recovery: 210
 
 Ruptured Spleen:
   data:
     tags: [wound, torso]
-    lead: There's a sharp pain in your left flank and shoulder. Better have that looked that.
+    fluff: There's a sharp pain in your left flank and shoulder. Better have that looked that.
     recovery: 30
 
 Nagging Injury:
   data:
     tags: [wound, torso]
-    lead: You'll remember how you got this.
+    fluff: You'll remember how you got this.
 
 Winded:
   data:
     tags: [wound, torso]
-    lead: It's not as bad you thought. You just need to catch your breath.
+    fluff: It's not as bad you thought. You just need to catch your breath.
     recovery: 1
 
