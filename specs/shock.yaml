@@ -1,0 +1,148 @@
+---
+
+metadata:
+  game: Horror Cards
+  title: Shock
+
+Agitated:
+  data:
+    tags: [shock]
+    fluff: You hide the effect it had on you behind a long series of swaggering threats and oaths.
+
+Angry:
+  data:
+    tags: [shock, psychosis]
+    fluff: Somebody fucked up again.
+
+Blocked:
+  data:
+    tags: [shock]
+    fluff: Your words do not get past your lips.
+
+Flustered:
+  data:
+    tags: [shock]
+    fluff: Sweat is beading on your brow. Must be warm in here, but your hands are shaking.
+
+Breathless:
+  data:
+    tags: [shock, breakdown]
+    fluff: Your heartbeat bothers you. You can't catch your breath.
+
+Clingy:
+  data:
+    tags: [shock]
+    fluff: You can't be alone right now. You need to stick close and keep talking.
+
+Confused:
+  data:
+    tags: [shock]
+    fluff: Think about it. If it doesn't make sense, it's probably wrong.
+
+Dizzy:
+  data:
+    tags: [shock]
+    fluff: You can't focus your thoughts, or your eyes.
+
+Cowardly:
+  data:
+    tags: [shock]
+    fluff: The choice is between sneaking and running away.
+
+Dissociated:
+  data:
+    tags: [shock, breakdown]
+    fluff: This wasn't supposed to happen. It can't be your fault. Why are you even here?
+
+Exhausted:
+  data:
+    tags: [shock]
+    fluff: Your feet are heavy. You'd like to lie down.
+
+Faint:
+  data:
+    tags: [shock]
+    crunch: You lose consciousness.
+    fluff: The world is dim.
+
+Fierce:
+  data:
+    tags: [shock, psychosis]
+    fluff: Of course you're not delusional. You have the right idea, and the others need to listen.
+
+Frenzied:
+  data:
+    tags: [shock, psychosis]
+    fluff: Did you see the fucking tentacles on that guy‽
+
+Nauseous:
+  data:
+    tags: [shock]
+    fluff: You lose your lunch.
+
+Hallucinating:
+  data:
+    tags: [shock, psychosis]
+    fluff: You see it everywhere until you look twice.
+
+Hateful:
+  data:
+    tags: [shock, psychosis]
+    fluff: They're pure evil.
+
+Poised:
+  data:
+    tags: [shock]
+    fluff: If you don't shoot first, you may not have a chance to identify your target.
+
+Reckless:
+  data:
+    tags: [shock]
+    fluff: This has to be settled right now.
+
+Reeling:
+  data:
+    tags: [shock, breakdown]
+    fluff: You don't want to remember this. Don't think about it. Wipe it out.
+
+Suggestible:
+  data:
+    tags: [shock]
+    fluff: You may be a little dazed, but you're ready to take orders.
+
+Terrified:
+  data:
+    tags: [shock, breakdown]
+    fluff: Nightmares crouch around that corner.
+
+Thrilled:
+  data:
+    tags: [shock, psychosis]
+    fluff: You feel strangely alive.
+
+Tired of Secrets:
+  data:
+    tags: [shock]
+    fluff: It's time to tell the world.
+
+Vertiginous:
+  data:
+    tags: [shock]
+    fluff: Your head is light. Your stomach is throwing somersaults. It's as if you were about to fall off a cliff.
+
+Violent:
+  data:
+    tags: [shock, psychosis]
+    fluff: Destroy it.
+
+Loud:
+  data:
+    tags: [shock, psychosis]
+    fluff: You scream, rant and plead, until you can only whimper. There isn't one coherent sentence in it.
+
+Rattled:
+  data:
+    tags: [shock]
+    fluff: You know it looks like a tic, but it's working.
+
+...

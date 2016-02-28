@@ -12,27 +12,34 @@ rules shared between several cards.
 from cbg.content.tag import AdvancedTag
 
 
-class WoundType(AdvancedTag):
-    def __init__(self, specstring, **kwargs):
-        name = '{} Wound'.format(specstring.capitalize())
-        super().__init__(specstring, full_name=name, subordinate_to=WOUND,
-                         **kwargs)
+class HCTag(AdvancedTag):
+    def __init__(self, specstring, full_name=None, **kwargs):
+        full_name = full_name or specstring.capitalize()
+        super().__init__(specstring, full_name=full_name, **kwargs)
 
     def __str__(self):
         return self.key
+
+
+class WoundType(HCTag):
+    def __init__(self, specstring, full_name=None, **kwargs):
+        full_name = full_name or '{} Wound'.format(specstring.capitalize())
+        super().__init__(specstring, full_name=full_name, subordinate_to=WOUND,
+                         **kwargs)
 
 
 # Mere strings.
 VIOLENCE_BALLISTIC = 'ballistic'
 VIOLENCE_CUT = 'cut'
 VIOLENCE_BLUNT = 'blunt'
+VIOLENCE = (VIOLENCE_BALLISTIC, VIOLENCE_CUT, VIOLENCE_BLUNT)
 
 # Major tags.
-CHECK = AdvancedTag('check')
-SHOCK = AdvancedTag('shock', sorting_value=2)
-INSANITY = AdvancedTag('insanity', sorting_value=4)
-WOUND = AdvancedTag('wound')
-LIFE = AdvancedTag('life', sorting_value=1)
+CHECK = HCTag('check')
+SHOCK = HCTag('shock', sorting_value=2)
+INSANITY = HCTag('insanity', sorting_value=4)
+WOUND = HCTag('wound')
+LIFE = HCTag('life', sorting_value=1)
 
 # Types of violence.
 BALLISTIC = WoundType(VIOLENCE_BALLISTIC, sorting_value=8)
@@ -45,15 +52,23 @@ TORSO = WoundType('torso', sorting_value=128)
 HEAD = WoundType('head', sorting_value=256)
 
 # Minor tags.
-STRAIN = AdvancedTag('strain')
-PSYCHOSIS = AdvancedTag('psychosis')
-BREAKDOWN = AdvancedTag('breakdown')
-TORMENT = AdvancedTag('torment', printing=False)
+STRAIN = HCTag('strain')
+PSYCHOSIS = HCTag('psychosis')
+BREAKDOWN = HCTag('breakdown')
+TORMENT = HCTag('torment', printing=False)
 
 # For coloring only.
-SUCCESS = AdvancedTag('success', printing=False, subordinate_to=CHECK)
-RISK = AdvancedTag('risk', printing=False, subordinate_to=CHECK)
-DESPERATION = AdvancedTag('desperation', printing=False, subordinate_to=CHECK)
-SFX_GOOD = AdvancedTag('sfx good', printing=False, subordinate_to=CHECK)
-SFX_BAD = AdvancedTag('sfx bad', printing=False, subordinate_to=CHECK)
-WASTE = AdvancedTag('waste', printing=False, subordinate_to=CHECK)
+SUCCESS = HCTag('success', printing=False, subordinate_to=CHECK)
+RISK = HCTag('risk', printing=False, subordinate_to=CHECK)
+DESPERATION = HCTag('desperation', printing=False, subordinate_to=CHECK)
+SFX_GOOD = HCTag('sfx good', printing=False, subordinate_to=CHECK)
+SFX_BAD = HCTag('sfx bad', printing=False, subordinate_to=CHECK)
+WASTE = HCTag('waste', printing=False, subordinate_to=CHECK)
+
+
+# A comprehensive list of the strings which identify decks.
+DECKS = (CHECK, SHOCK, INSANITY, LIFE, BALLISTIC,
+         CUT, BLUNT, DISC, TORSO, HEAD)
+DECK_KEYS = tuple(map(lambda t: t.key, DECKS))
+SPECFILES = tuple(map(lambda s: 'auto_' + s if s in VIOLENCE else s,
+                      DECK_KEYS))

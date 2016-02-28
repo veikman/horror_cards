@@ -1,6 +1,6 @@
 .*
 *.swp
 __*
-locations.yaml
+auto_*.yaml
 svg
-printing
+png

@@ -1,0 +1,28 @@
+---
+
+metadata:
+  game: Horror Cards
+  title: Discretionary Wound
+
+Lost a Lot of Blood:
+  metadata:
+    copies: 5
+  data:
+    tags: [wound, discretionary, strain]
+    fluff:
+      - Your skin is pale and cool to the touch.
+      - Without a transfusion, you will go into shock.
+    recovery: 30
+    crunch: "{{fatality}}"
+
+Infection:
+  metadata:
+    copies: 3
+  data:
+    tags: [wound, discretionary, strain]
+    fluff:
+      - Your veins are on fire.
+    recovery: 14
+    crunch: "{{fatality}}"
+
+...

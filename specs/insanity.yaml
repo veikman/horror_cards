@@ -1,0 +1,191 @@
+---
+
+metadata:
+  game: Horror Cards
+  title: Insanity
+
+Addiction:
+  data:
+    tags: [insanity]
+    crunch: Take 1 Stress each day you fail to indulge.
+    fluff: Gambling, sex, drugs. The more distracting, the better.
+
+Atavism:
+  data:
+    tags: [insanity]
+    fluff: You dream of impossible brutality.
+
+Asceticism:
+  data:
+    tags: [insanity]
+    crunch: -1 Charm.
+    fluff: You do not deserve, or do not have time for, the basics of personal grooming, hygiene and polite conversation.
+
+Broken Dreams:
+  data:
+    tags: [insanity]
+    crunch: -1 Charm.
+    fluff: You cry a lot.
+
+Bigotry:
+  data:
+    tags: [insanity]
+    crunch: -1 Charm.
+    fluff: At least you're the right kind of people.
+
+Biophobia:
+  data:
+    tags: [insanity]
+    fluff: You hate nature. The starry sky is threatening, or the woods are full of cruelty and filth. You feel more comfortable indoors.
+
+Bipolar:
+  data:
+    tags: [insanity]
+    crunch: -1 Cool.
+    fluff: Work around the clock. Crash hard.
+
+Callousness:
+  data:
+    tags: [insanity]
+    fluff:
+      - There's nothing you won't do, but on the other hand, there's nothing you won't do.
+
+Collection:
+  data:
+    tags: [insanity]
+    crunch: -1 Perception.
+    fluff: The right gear will do the job. You can't bear to lose material possessions.
+
+Cruelty:
+  data:
+    tags: [insanity]
+    crunch: +1 Cool.
+    fluff: You just need to get a hold of those creeps. Preferably somewhere quiet.
+
+Curiosity:
+  data:
+    tags: [insanity]
+    crunch: +1 Perception.
+    fluff: The truth about the world cannot be your enemy. It must provide opportunities. Perhaps you can join the winning team.
+
+Death Wish:
+  data:
+    tags: [insanity]
+    fluff: You're on the 9mm retirement plan for maximum control. When the moment comes, you won't care who retires with you. It is a mercy, after all.
+
+Denial:
+  data:
+    tags: [insanity]
+    crunch: -1 Cool.
+    fluff: You don't have a problem.
+
+Depression:
+  data:
+    tags: [insanity]
+    crunch: -1 Perception.
+    fluff: Not much matters. Maybe not even the fight.
+
+Eating Disorder:
+  data:
+    tags: [insanity]
+    fluff: You're extremely picky about your food. Your therapist says it represents your ties to the world.
+
+Eversion:
+  data:
+    tags: [insanity]
+    crunch: -1 Charm.
+    fluff: You're never healthy anymore. One month it's your skin or a nasty cough, another your stomach, your teeth, your heart.
+
+Exposure:
+  data:
+    tags: [insanity]
+    crunch: You cannot have Life.
+    fluff: You're an insider now, like the Sonderkommandos. Your old life and world have burned and can never be recovered.
+
+Extremism:
+  data:
+    tags: [insanity]
+    fluff: The solution requires the transformation of society.
+
+Fugue:
+  data:
+    tags: [insanity]
+    fluff: Sometimes you go missing for hours, days or weeks. You drift for a while, having no responsibilities. Forming no memories.
+
+Hero Complex:
+  data:
+    tags: [insanity]
+    crunch: -1 Cool.
+    fluff: You're not perfect, but you're right for this. You're going to make it.
+
+Insomnia:
+  data:
+    tags: [insanity]
+    crunch: -1 Perception.
+    fluff: No sleep for the wicked.
+
+OCD:
+  data:
+    tags: [insanity]
+    crunch: -1 Charm.
+    fluff: Impose order on your life.
+
+Plastic People:
+  data:
+    tags: [insanity]
+    crunch: -1 Charm.
+    fluff: You hate the faceless masses because you have to defend them.
+
+Phobia:
+  data:
+    tags: [insanity]
+    fluff: You have a paralyzing fear of something that hurt you.
+
+Paraphilia:
+  data:
+    tags: [insanity]
+    fluff: Vanilla doesn't do anything for you.
+
+Paranoia:
+  data:
+    tags: [insanity]
+    crunch: -1 Cool.
+    fluff: They spy on you. They steal from you. They blame you for everything that goes wrong.
+
+PTSD:
+  data:
+    tags: [insanity]
+    crunch: -1 Cool.
+    fluff: For you it's mainly a constant sense of danger.
+
+The Rabbit Hole:
+  data:
+    tags: [insanity]
+    crunch:
+      - +1 Perception.
+      - "When you take this: Draw a random Insanity."
+    fluff: There is no protection when the implications unspool.
+
+Rebellion:
+  data:
+    tags: [insanity]
+    fluff: Your bosses talk shit. Your subordinates are mutineering slime.
+
+Religion:
+  data:
+    tags: [insanity]
+    fluff: "You have been fortunate to experience the numinous: A sign of the profound meaning beneath everyday life. It may not be subject to reason, but it is always there."
+
+Self-harm:
+  data:
+    tags: [insanity]
+    crunch: "When you are not wounded: Draw 1 Wound."
+    fluff: Pain means you're alive. It says you won't be called to fight.
+
+Tainted Wisdom:
+  data:
+    tags: [insanity]
+    crunch: -1 Charm.
+    fluff: Your secrets often make you nauseous. You're afraid to infect civilians just by getting close.
+
+...

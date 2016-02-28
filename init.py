@@ -29,20 +29,34 @@ This project began on 2014-03-28.
 # Copyright 2014-2016 Viktor Eikman
 
 
+import os
+
 import cbg
 
 import horror_cards
 
 
 def main():
-    decks = {'basic': horror_cards.card.BasicCard,
-             horror_cards.location.FILENAME: horror_cards.card.BasicCard}
+    # Move to project folder and make sure there's a place for specifications.
+    os.chdir(os.path.dirname(__file__))
+    folder_specs = 'specs'
+    try:
+        os.mkdir(folder_specs)
+    except FileExistsError:
+        pass
 
-    app = cbg.app.Application('Horror Cards', decks)
+    # Generate specifications for some of the cards.
+    for bodymap in (horror_cards.location.Blunt,
+                    horror_cards.location.Cut,
+                    horror_cards.location.Ballistic):
+        bodymap().specification(folder_specs)
 
-    # Generate the specifications for some of the cards.
-    horror_cards.location.generate(app.folder_specs)
+    # Use the same basic card type for everything, including manual specs.
+    decks = {filename_base: horror_cards.card.BasicCard
+             for filename_base in horror_cards.tags.SPECFILES}
 
+    # Execute.
+    app = cbg.app.Application('Horror Cards', decks, folder_specs=folder_specs)
     return app.execute()
 
 

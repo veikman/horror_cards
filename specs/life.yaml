@@ -1,0 +1,84 @@
+---
+
+metadata:
+  game: Horror Cards
+  title: Life
+
+Money:
+  metadata:
+    copies: 4
+  data:
+    tags: [life]
+    fluff: You're not in debt. You don't worry about food or a place to sleep.
+
+Love:
+  metadata:
+    copies: 3
+  data:
+    tags: [life]
+    fluff: You're in a steady relationship. Your partner cares about you.
+
+Parenthood:
+  metadata:
+    copies: 4
+  data:
+    tags: [life]
+    fluff: You get along with your kid.
+
+Career:
+  metadata:
+    copies: 2
+  data:
+    tags: [life]
+    fluff: You're up for promotion. If you toe the line, you can really go places.
+
+Recognition:
+  metadata:
+    copies: 2
+  data:
+    tags: [life]
+    fluff: Your peers admire your energy and skill.
+
+Friendship:
+  metadata:
+    copies: 2
+  data:
+    tags: [life]
+    fluff: You can tell your best buddy almost anything.
+
+Hobby:
+  metadata:
+    copies: 3
+  data:
+    tags: [life]
+    fluff: You have a physical or creative outlet in your spare time.
+
+Mentor:
+  metadata:
+    copies: 2
+  data:
+    tags: [life]
+    fluff: You still talk to the old timer who taught you everything you know.
+
+Heritage:
+  metadata:
+    copies: 3
+  data:
+    tags: [life]
+    fluff: You know where you came from. You can go back.
+
+Therapist:
+  metadata:
+    copies: 4
+  data:
+    tags: [life]
+    fluff: You have long-term professional help.
+
+Home:
+  metadata:
+    copies: 3
+  data:
+    tags: [life]
+    fluff: The place where you sleep feels calm and safe.
+
+...

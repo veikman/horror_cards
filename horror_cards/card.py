@@ -33,10 +33,10 @@ class BasicCard(cbg.content.card.Card):
     presenter_class_back = horror_cards.svg.CardBack
 
     @property
-    def sorting_keys(self):
-        '''An iterable unique to the card type.'''
+    def _sorting_signature(self):
+        '''Salient properties in a combination unique to the card.'''
         tag_values = sum([t.sorting_value for t in self.tags])
         subset = filter(lambda t: not t.subordinate_to, self.tags)
         tag_names = str(sorted(map(str, subset)))
 
-        return (tag_values, tag_names, self.title)
+        return (str(self.deck), tag_values, tag_names, str(self))

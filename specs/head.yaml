@@ -1,0 +1,66 @@
+---
+
+metadata:
+  game: Horror Cards
+  title: Head Wound
+
+Sickening Pain:
+  data:
+    tags: [wound, head]
+    fluff: Too bad you're conscious.
+    crunch: Take 1 Stress.
+    recovery: 3
+
+Concussion:
+  data:
+    tags: [wound, head]
+    fluff: A mild brain injury and a massive headache.
+    crunch: "When you take another Wound: Take 1 Stress or lose consciousness."
+    recovery: 14
+
+Spitting Teeth:
+  data:
+    tags: [wound, head]
+    fluff: You used to be so pretty.
+    recovery: 6
+
+Swimming Vision:
+  data:
+    tags: [wound, head]
+    fluff: For someone who just took a blow to the head, you're incredibly lucky.
+    crunch: -1 Perception.
+    recovery: 1
+
+Lost an Eye:
+  data:
+    tags: [wound, head]
+    fluff: Those aren't tears on your cheek.
+    recovery: 60
+
+Broken Nose:
+  data:
+    tags: [wound, head]
+    fluff: In the right line of work it's sort of cool.
+    recovery: 14
+
+Torn Ear:
+  data:
+    tags: [wound, head]
+    fluff: Lost some cartilage.
+    recovery: 6
+
+Facial Bruising:
+  data:
+    tags: [wound, head]
+    fluff: Cheek all swollen up.
+    recovery: 4
+
+Compression Fracture:
+  data:
+    tags: [wound, head, torment]
+    fluff: A broken neck means chronic back pain.
+    crunch:
+      - "{{fatality}}"
+      - "{{blackout}}"
+
+...

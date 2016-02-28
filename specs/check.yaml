@@ -1,0 +1,61 @@
+---
+
+metadata:
+  game: Horror Cards
+  title: Check
+
+The Triumph of His Pledge:
+  metadata:
+    copies: 2
+  data:
+    tags: [check, success]
+    crunch:
+      - You achieve the main goal of your action.
+
+Loan Oft Loses:
+  metadata:
+    copies: 3
+  data:
+    tags: [check, risk]
+    crunch:
+      - "If you take 1 Stress or remove this card from play until the next session: You achieve the main goal of your action."
+    fluff:
+      - They'll believe one bluff. You can reach behind the counter when she looks away. By luck or bravado, you can scrape by this time.
+
+Slings and Arrows:
+  metadata:
+    copies: 3
+  data:
+    tags: [check, sfx bad]
+    crunch:
+      - "In combat: Draw 1 Wound."
+      - Something bad but unrelated to the main goal of your action.
+    fluff:
+      - It takes longer than you expected. Your boots lose their grip. The flashlight goes out. One spark lands in the pooled gasoline.
+
+Yon High Eastward Hill:
+  data:
+    tags: [check, sfx good]
+    crunch:
+      - "If you drew this along with Slings and Arrows: Discard 1 of each."
+      - Something good but unrelated to the main goal of your action.
+    fluff:
+      - A secret stash cracked open. The killer's DNA beneath your ragged fingernails. The break of dawn.
+
+Martial Stalk:
+  data:
+    tags: [check, desperation]
+    crunch:
+      - "As many times as you like: Take 1 Stress or 1 Wound and draw another card."
+    fluff:
+      - Push hard to prove your dedication.
+
+The Pale Cast of Thought:
+  metadata:
+    copies: 2
+  data:
+    tags: [check, waste]
+    crunch:
+      - No effect.
+
+...

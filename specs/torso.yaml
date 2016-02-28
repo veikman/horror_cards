@@ -1,0 +1,58 @@
+---
+
+metadata:
+  game: Horror Cards
+  title: Torso Wound
+
+Coughing Up Blood:
+  data:
+    tags: [wound, torso, strain]
+    fluff: There's something wrong with your lungs.
+    recovery: 30
+
+Splintered Ribs:
+  data:
+    tags: [wound, torso]
+    fluff: Breathing doesn't normally feel this way.
+    recovery: 120
+
+Beat Up Inside:
+  data:
+    tags: [wound, torso, strain]
+    fluff: You'll be pissing blood for a week.
+    recovery: 60
+
+Heart Attack:
+  data:
+    tags: [wound, torso, strain]
+    fluff:
+      - You ought to lie down.
+      - It starts with a sudden pain behind the breast bone.
+    crunch: "{{fatality}}"
+    recovery: 90
+
+Sucking Chest Wound:
+  data:
+    tags: [wound, torso, strain]
+    fluff: If you live, you'll be in injury rehab for a year.
+    crunch: "{{fatality}}"
+    recovery: 210
+
+Ruptured Spleen:
+  data:
+    tags: [wound, torso]
+    fluff: There's a sharp pain in your left flank and shoulder. Better have that looked that.
+    recovery: 30
+
+Nagging Injury:
+  data:
+    tags: [wound, torso]
+    fluff: You'll remember how you got this.
+
+Winded:
+  data:
+    tags: [wound, torso]
+    fluff: It's not as bad you thought. You just need to catch your breath.
+    recovery: 1
+
+...
