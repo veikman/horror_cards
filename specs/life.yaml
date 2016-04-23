@@ -3,82 +3,50 @@
 metadata:
   game: Horror Cards
   title: Life
+  defaults:
+    copies: 4
 
 Money:
-  metadata:
-    copies: 4
   data:
     tags: [life]
     fluff: You're not in debt. You don't worry about food or a place to sleep.
 
 Love:
-  metadata:
-    copies: 3
   data:
     tags: [life]
-    fluff: You're in a steady relationship. Your partner cares about you.
+    fluff: You're in a steady relationship. Your partner cares about you, or else you believe she would, were she still alive.
 
 Parenthood:
-  metadata:
-    copies: 4
   data:
     tags: [life]
-    fluff: You get along with your kid.
-
-Career:
-  metadata:
-    copies: 2
-  data:
-    tags: [life]
-    fluff: You're up for promotion. If you toe the line, you can really go places.
+    fluff: You get along with your kid or remember her often.
 
 Recognition:
-  metadata:
-    copies: 2
   data:
     tags: [life]
-    fluff: Your peers admire your energy and skill.
+    fluff: You are admired by peers, underlings, or fans. If you toe the line, you can go places.
 
 Friendship:
-  metadata:
-    copies: 2
   data:
     tags: [life]
-    fluff: You can tell your best buddy almost anything.
+    fluff: You're in a group that's been through a lot. You can tell your best buddy almost anything, even if you have to go to her grave to do it.
 
 Hobby:
-  metadata:
-    copies: 3
   data:
     tags: [life]
-    fluff: You have a physical or creative outlet in your spare time.
+    fluff: What you do in your spare time is important enough to keep you going.
 
 Mentor:
-  metadata:
-    copies: 2
   data:
     tags: [life]
-    fluff: You still talk to the old timer who taught you everything you know.
+    fluff: |-
+      Someone has taken you under their wing. Your priest, coach, boss, psychotherapist, family doctor, or the old timer who taught you everything you know.
 
 Heritage:
-  metadata:
-    copies: 3
   data:
     tags: [life]
-    fluff: You know where you came from. You can go back.
-
-Therapist:
-  metadata:
-    copies: 4
-  data:
-    tags: [life]
-    fluff: You have long-term professional help.
-
-Home:
-  metadata:
-    copies: 3
-  data:
-    tags: [life]
-    fluff: The place where you sleep feels calm and safe.
+    fluff:
+      - This may be family beyond your spouse and children, a home that feels completely calm and safe, or an ideal.
+      - You know where you came from. You can go back.
 
 ...
